@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".feature.mainmenu.MainMenu"
+
+    android:background="@color/hijauprimary">
+
+
+    <TextView
+        android:id="@+id/welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/poppinsbold"
+        android:text="Welcome"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/usernameBeranda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/poppinsbold"
+        android:text="Albert"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        app:layout_constraintStart_toEndOf="@+id/welcome"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="290dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="60dp"
+        android:layout_marginBottom="429dp"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/Calories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/poppinsbold"
+                android:text="Today Calories"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.096"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/MaxCalories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="59dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="54dp"
+                android:fontFamily="@font/poppinsbold"
+                android:text="1500 Calories"
+                android:textColor="@color/hijausecondary"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.551"
+                app:layout_constraintStart_toEndOf="@+id/Calories"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/TodayRecomendation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="43dp"
+                android:layout_marginTop="60dp"
+                android:layout_marginEnd="43dp"
+                android:fontFamily="@font/poppinsbold"
+                android:text="Today Recommendation"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvKecil"
+                android:layout_width="210dp"
+                android:layout_height="87dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginBottom="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/TodayRecomendation" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:layout_marginTop="32dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/Menu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:layout_marginTop="4dp"
+                android:fontFamily="@font/poppinsbold"
+                android:text="Menu"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/berandaProgress"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="240dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="55dp"
+                app:cardBackgroundColor="@color/hijauprimary"
+                app:cardCornerRadius="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/progress" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/DietPlan1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="115dp"
+                android:fontFamily="@font/poppinsbold"
+                android:text="Diet Plan"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toStartOf="@+id/Progress"
+                app:layout_constraintTop_toBottomOf="@+id/berandadiet" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/berandaFAQ"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="55dp"
+                android:layout_marginTop="65dp"
+                android:layout_marginEnd="240dp"
+                app:cardBackgroundColor="@color/hijauprimary"
+                app:cardCornerRadius="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/DietPlan1">
+
+                <ImageView
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/help" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/Progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="264dp"
+                android:layout_marginEnd="75dp"
+                android:layout_marginBottom="42dp"
+                android:fontFamily="@font/poppinsbold"
+                android:text="Progress"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                app:layout_constraintBottom_toTopOf="@+id/berandaProfile"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/berandaProgress" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/berandadiet"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="55dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="240dp"
+                app:cardBackgroundColor="@color/hijauprimary"
+                app:cardCornerRadius="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/nutritionwhite" />
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/Faq"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="150dp"
+                android:fontFamily="@font/poppinsbold"
+                android:text="FAQ"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toStartOf="@+id/Profile"
+                app:layout_constraintTop_toBottomOf="@+id/berandaFAQ" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/berandaProfile"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="240dp"
+                android:layout_marginTop="65dp"
+                android:layout_marginEnd="55dp"
+                app:cardBackgroundColor="@color/hijauprimary"
+                app:cardCornerRadius="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/berandaProgress">
+
+                <ImageView
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/user" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/Profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="270dp"
+                android:layout_marginEnd="81dp"
+                android:layout_marginBottom="57dp"
+                android:fontFamily="@font/poppinsbold"
+                android:text="Profile"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/berandaProfile" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Nutriplan"
+        tools:targetApi="31">
+        <activity
+            android:name=".feature.makeplan.MakePlan"
+            android:exported="false" />
+        <activity
+            android:name=".feature.dietplan.detail.DetailDietPlan"
+            android:exported="false" />
+        <activity
+            android:name=".feature.dietplan.DietPlan"
+            android:exported="false" />
+        <activity
+            android:name=".feature.faq.FAQDetail"
+            android:exported="false" />
+        <activity
+            android:name=".feature.faq.FAQ"
+            android:exported="false" />
+        <activity
+            android:name=".feature.profile.Profile"
+            android:exported="false" />
+        <activity
+            android:name=".feature.mainmenu.MainMenu"
+            android:exported="false" />
+        <activity
+            android:name=".feature.signup.signup"
+            android:exported="false" />
+        <activity
+            android:name=".feature.login.login"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

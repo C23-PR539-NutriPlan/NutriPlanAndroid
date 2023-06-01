@@ -27,13 +27,14 @@ class DietPlan : AppCompatActivity() {
     }
 
     private fun getlistPlan():ArrayList<Plan>{
-        val dataDay = resources.getStringArray(R.array.Day)
+        val dataName = resources.getStringArray(R.array.name)
         val dataMax_Cal = resources.getStringArray(R.array.Max_Cal)
-        val dataFood = resources.getStringArray(R.array.Food)
+        val dataIngredients = resources.getStringArray(R.array.Ingredients)
+        val photo = resources.obtainTypedArray(R.array.Photo)
         val listPLAN = ArrayList<Plan>()
 
-        for(i in dataDay.indices){
-            val PLAN = Plan(dataDay[i],dataFood[i],dataMax_Cal[i])
+        for(i in dataName.indices){
+            val PLAN = Plan(dataName[i],dataIngredients[i],dataMax_Cal[i], photo.getResourceId(i,-1))
             listPLAN.add(PLAN)
         }
         return listPLAN

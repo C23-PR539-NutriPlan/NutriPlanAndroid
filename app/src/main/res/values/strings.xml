@@ -16,30 +16,30 @@
         <item>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ornare rutrum auctor. Sed at erat mi. Morbi semper quis justo nec commodo. Donec non neque suscipit, ullamcorper tortor eget, dictum est. Integer ut est dui. Nulla interdum tincidunt nunc, imperdiet consectetur neque viverra quis </item>
     </string-array>
 
-    <string-array name="Day">
-        <item>Day 1 </item>
-        <item>Day 2 </item>
-        <item>Day 3 </item>
-        <item>Day 4 </item>
-        <item>Day 5 </item>
-        <item>Day 6 </item>
-        <item>Day 7 </item>
-        <item>Day 8 </item>
-        <item>Day 9 </item>
-        <item>Day 10 </item>
+    <string-array name="name">
+        <item>Tuna cabe ijo </item>
+        <item>Ayam Taliwang</item>
+        <item>KFC</item>
+        <item>Pempek Palembang</item>
+        <item>Nasi Goreng</item>
+        <item>Nasi Merah</item>
+        <item>Nasi Liwet</item>
+        <item>Nasi Uduk</item>
+        <item>Nasi Kuning</item>
+        <item>Nasi Item</item>
     </string-array>
 
-    <string-array name="Food">
-        <item>Kentang: 400Cal</item>
-        <item>Ikan: 410Cal</item>
-        <item>Indomie: 440Cal </item>
-        <item>Pasta: 490Cal</item>
-        <item>Salad: 300Cal</item>
-        <item>Steak: 500Cal</item>
-        <item>Nasi Padang: 1000Cal</item>
-        <item>Nasi Rames: 800Cal</item>
-        <item>Soto Ayam: 700Cal</item>
-        <item>Jagung: 100Cal</item>
+    <string-array name="Ingredients">
+        <item>Kentang</item>
+        <item>Ikan</item>
+        <item>Indomie</item>
+        <item>Pasta</item>
+        <item>Salad</item>
+        <item>Steak</item>
+        <item>Nasi Padangl</item>
+        <item>Nasi Rames</item>
+        <item>Soto Ayam</item>
+        <item>Jagun: 100Cal</item>
     </string-array>
 
     <string-array name="Max_Cal">
@@ -55,4 +55,19 @@
         <item>300 Calories</item>
         <item>500 Calories</item>
     </string-array>
+
+    <integer-array name="Photo">
+        <item>@drawable/tuna</item>
+        <item>@drawable/tuna</item>
+        <item>@drawable/tuna</item>
+        <item>@drawable/tuna</item>
+        <item>@drawable/tuna</item>
+        <item>@drawable/tuna</item>
+        <item>@drawable/tuna</item>
+        <item>@drawable/tuna</item>
+        <item>@drawable/tuna</item>
+        <item>@drawable/tuna</item>
+    </integer-array>
+
+
 </resources>

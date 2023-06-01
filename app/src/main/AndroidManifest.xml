@@ -12,7 +12,7 @@
         android:theme="@style/Theme.Nutriplan"
         tools:targetApi="31">
         <activity
-            android:name=".feature.makeplan.MakePlan"
+            android:name=".feature.makereccomendation.MakeReccomendation"
             android:exported="false" />
         <activity
             android:name=".feature.dietplan.detail.DetailDietPlan"

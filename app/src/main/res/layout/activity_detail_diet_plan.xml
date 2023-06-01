@@ -7,81 +7,74 @@
     tools:context=".feature.dietplan.detail.DetailDietPlan">
 
     <TextView
-        android:id="@+id/judulDay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/poppins"
-        android:text="Day 2"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/judul"
+        android:id="@+id/judulFood"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:fontFamily="@font/poppinsbold"
-        android:text="Max Calories"
-        android:textColor="@color/black"
+        android:fontFamily="@font/poppins"
+        android:text="Tuna Cabe Ijo"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/judulDay" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/maxCalDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="135dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="138dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/poppinsbold"
         android:text="1500 Calories"
         android:textColor="@color/hijauprimary"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/judul" />
+        app:layout_constraintTop_toBottomOf="@+id/gambar_makanan" />
 
     <TextView
-        android:id="@+id/jud"
+        android:id="@+id/bahan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/poppinsbold"
-        android:text="Food Recommendation"
+        android:text="Food Ingredients"
         android:textColor="@color/black"
         android:textSize="16dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/maxCalDetail" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="350dp"
-        android:layout_height="500dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="30dp"
+        android:layout_width="250dp"
+        android:layout_height="420dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/buttonrounded"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/jud">
+        app:layout_constraintStart_toStartOf="parent">
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvDetailDietPlan"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            />
+            tools:layout_editor_absoluteX="-104dp"
+            tools:layout_editor_absoluteY="0dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/gambar_makanan"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/judulFood"
+        tools:src="@tools:sample/avatars" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,6 +12,7 @@ import com.example.nutriplan.feature.faq.FAQElement
 import com.example.nutriplan.model.Plan
 
 class DetailDietPlan : AppCompatActivity() {
+
     val listPlan  = ArrayList<Plan>()
     private lateinit var binding: ActivityDetailDietPlanBinding
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,8 +30,9 @@ class DetailDietPlan : AppCompatActivity() {
 
         if (dataPlan != null){
             binding.apply {
-                judulDay.text = dataPlan.day
+                judulFood.text = dataPlan.name
                 maxCalDetail.text = dataPlan.max_cal
+                gambarMakanan.setImageResource(dataPlan.photo)
             }
             binding.rvDetailDietPlan.setHasFixedSize(true)
             if (binding.rvDetailDietPlan.size == 0){
@@ -42,17 +44,19 @@ class DetailDietPlan : AppCompatActivity() {
     }
 
     private fun getlistPlan():ArrayList<Plan>{
-        val dataDay = resources.getStringArray(R.array.Day)
+        val dataName = resources.getStringArray(R.array.name)
         val dataMax_Cal = resources.getStringArray(R.array.Max_Cal)
-        val dataFood = resources.getStringArray(R.array.Food)
+        val dataIngredients = resources.getStringArray(R.array.Ingredients)
+        val photo = resources.obtainTypedArray(R.array.Photo)
         val listPLAN = ArrayList<Plan>()
 
-        for(i in dataDay.indices){
-            val PLAN = Plan(dataDay[i],dataFood[i],dataMax_Cal[i])
+        for(i in dataName.indices){
+            val PLAN = Plan(dataName[i],dataIngredients[i],dataMax_Cal[i], photo.getResourceId(i,-1))
             listPLAN.add(PLAN)
         }
         return listPLAN
     }
+
 
     private fun showListPlan(){
         for (i in  0 .. 9){

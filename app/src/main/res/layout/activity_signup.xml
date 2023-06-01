@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppinsbold"
         android:textColor="@color/black"
-        android:text="Email"
+        android:text="Name"
         android:textSize="15dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -63,7 +63,7 @@
             android:id="@+id/login_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email"
+            android:hint="Name"
             android:inputType="textEmailAddress"
             android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -75,7 +75,7 @@
         android:layout_marginTop="4dp"
         android:fontFamily="@font/poppinsbold"
         android:textColor="@color/black"
-        android:text="Password"
+        android:text="Email"
         android:textSize="15dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -101,7 +101,7 @@
             android:id="@+id/login_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Password"
+            android:hint="Email"
             android:inputType="textEmailAddress"
             android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -112,7 +112,7 @@
         android:layout_marginTop="4dp"
         android:fontFamily="@font/poppinsbold"
         android:textColor="@color/black"
-        android:text="Confirm Password"
+        android:text="Password"
         android:textSize="15dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -138,8 +138,8 @@
             android:id="@+id/login_password_confirm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Confirm password"
-            android:inputType="textEmailAddress"
+            android:hint="Password"
+            android:inputType="textPassword"
             android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
 

@@ -5,7 +5,8 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class Plan(
-    val day:String,
-    val food:String,
-    val max_cal:String
+    val name:String,
+    val ingredients:String,
+    val max_cal:String,
+    val photo:Int
 ):Parcelable

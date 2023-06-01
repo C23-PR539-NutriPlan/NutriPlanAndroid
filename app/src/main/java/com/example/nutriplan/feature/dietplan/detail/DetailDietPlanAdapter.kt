@@ -12,18 +12,18 @@ import com.example.nutriplan.model.Plan
 class DetailDietPlanAdapter(private  val listPLAN : ArrayList<Plan>): RecyclerView.Adapter<DetailDietPlanAdapter.ListViewHolder>() {
 
     inner class ListViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        val food :TextView = itemView.findViewById(R.id.FoodDetail)
+        val food :TextView = itemView.findViewById(R.id.item_rv_kecil)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
-        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_detail_dietplan,parent,false)
+        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_main_menu_,parent,false)
         return ListViewHolder(view)
     }
 
     override fun getItemCount(): Int = listPLAN.size
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val  (day,foodla,calories) = listPLAN[position]
+        val  (day,foodla,calories,photo) = listPLAN[position]
 
         holder.food.text = foodla
 

@@ -11,6 +11,9 @@ class ProfileViewModel(private val repository: Repository): ViewModel() {
     fun clearToken(){
         viewModelScope.launch { repository.clearToken() }
     }
+    fun clearId(){
+        viewModelScope.launch { repository.clearID() }
+    }
     fun getToken() = repository.getToken().asLiveData(Dispatchers.IO)
     fun getID() = repository.getID().asLiveData(Dispatchers.IO)
     fun getProfile(id : String) = repository.getProfile(id)

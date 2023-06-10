@@ -9,20 +9,14 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.core.view.size
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nutriplan.R
 import com.example.nutriplan.ViewModelFactory
 import com.example.nutriplan.databinding.ActivityMainMenuBinding
 import com.example.nutriplan.feature.dietplan.DietPlan
 import com.example.nutriplan.feature.faq.FAQ
-import com.example.nutriplan.feature.faq.FAQElement
-import com.example.nutriplan.feature.faq.FAQuestionAdapter
-import com.example.nutriplan.feature.makereccomendation.MakeReccomendation
+import com.example.nutriplan.feature.form.Form
 import com.example.nutriplan.feature.profile.Profile
-import com.example.nutriplan.feature.profile.ProfileViewModel
 import com.example.nutriplan.model.Data1Item
-import com.example.nutriplan.model.Plan
 
 class MainMenu : AppCompatActivity() {
     private lateinit var binding: ActivityMainMenuBinding
@@ -77,7 +71,7 @@ class MainMenu : AppCompatActivity() {
                 startActivity(intent)
             }
             binding.MenuGenerate.setOnClickListener {
-                val intent = Intent(this@MainMenu, MakeReccomendation::class.java)
+                val intent = Intent(this@MainMenu, Form::class.java)
                 startActivity(intent)
             }
             binding.menuRecommendation.setOnClickListener {

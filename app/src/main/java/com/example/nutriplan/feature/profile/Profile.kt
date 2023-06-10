@@ -66,6 +66,7 @@ class Profile : AppCompatActivity() {
         binding.apply {
             logoutBtn.setOnClickListener {
                 profileViewModel.clearToken()
+                profileViewModel.clearId()
                 backToLogin()
             }
         }

@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.nutriplan.di.Injection
+import com.example.nutriplan.feature.form.FormViewModel
 import com.example.nutriplan.feature.login.LoginViewModel
 import com.example.nutriplan.feature.mainmenu.MainMenuViewModel
 import com.example.nutriplan.feature.profile.ProfileViewModel
@@ -23,6 +24,8 @@ class ViewModelFactory private constructor(private val  repository:Repository):
             return MainMenuViewModel(repository) as T
         }else if (modelClass.isAssignableFrom(ProfileViewModel::class.java)){
             return ProfileViewModel(repository) as T
+        }else if (modelClass.isAssignableFrom(FormViewModel::class.java)){
+            return FormViewModel(repository) as T
         }
         throw java.lang.IllegalArgumentException("Unknown ViewModel Class: " + modelClass.name)
     }

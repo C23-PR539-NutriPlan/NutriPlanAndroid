@@ -24,6 +24,9 @@ class Repository (private val apiService: ApiService, private val authDataStore:
     suspend fun clearToken() {
         authDataStore.clearToken()
     }
+    suspend fun clearID(){
+        authDataStore.clearId()
+    }
 
     fun getUserLogin(email: String, password: String): LiveData<com.example.nutriplan.repository.Result<LoginResponse>> = liveData(Dispatchers.IO) {
             emit(com.example.nutriplan.repository.Result.Loading)
@@ -67,6 +70,16 @@ class Repository (private val apiService: ApiService, private val authDataStore:
         try {
 //            val id3 :String = getID()
             val response = apiService.getProfile(generateBearerID(id))
+            emit(com.example.nutriplan.repository.Result.Success(response))
+        }catch (e:Exception){
+            emit(com.example.nutriplan.repository.Result.Error(e.message.toString()))
+        }
+    }
+
+    fun postProfile(id: String,height : Int,weight : Int, weightGoal : Int, gender:String,age : Int,bmi: Int,allergies : List<String>,preferences:List<String>) : LiveData<com.example.nutriplan.repository.Result<ProfilePostResponse>> = liveData(Dispatchers.IO){
+        emit(com.example.nutriplan.repository.Result.Loading)
+        try {
+            val response = apiService.postProfile(generateBearerID(id),height, weight, 0, gender, age, bmi, allergies, preferences)
             emit(com.example.nutriplan.repository.Result.Success(response))
         }catch (e:Exception){
             emit(com.example.nutriplan.repository.Result.Error(e.message.toString()))

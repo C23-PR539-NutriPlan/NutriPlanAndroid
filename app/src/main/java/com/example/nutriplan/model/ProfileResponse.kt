@@ -4,8 +4,8 @@ import com.google.gson.annotations.SerializedName
 
 data class ProfileResponse(
 
-	@field:SerializedName("data")
-	val data: Data1,
+	@field:SerializedName("data1")
+	val data1: List<Data1Item>,
 
 	@field:SerializedName("message")
 	val message: String,
@@ -14,7 +14,7 @@ data class ProfileResponse(
 	val status: String
 )
 
-data class UserItem(
+data class Data1Item(
 
 	@field:SerializedName("password")
 	val password: String,
@@ -45,9 +45,4 @@ data class UserItem(
 
 	@field:SerializedName("bmi")
 	val bmi: Int
-)
-
-data class Data1(
-	@field:SerializedName("user")
-	val user: List<UserItem>
 )

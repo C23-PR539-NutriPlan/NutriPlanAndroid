@@ -1,8 +1,6 @@
 package com.example.nutriplan.api
 
-import com.example.nutriplan.model.LoginResponse
-import com.example.nutriplan.model.RegisterResponse
-import com.example.nutriplan.model.UserItem
+import com.example.nutriplan.model.*
 import retrofit2.http.*
 
 interface ApiService {
@@ -22,9 +20,9 @@ interface ApiService {
     ): LoginResponse
 
 
-    @GET("users/{id}")
+    @GET("user/{id}")
     suspend fun getProfile(
         @Header("Authorization") token :String,
         @Path("id") id : String
-    ):UserItem
+    ):ProfileResponse
 }

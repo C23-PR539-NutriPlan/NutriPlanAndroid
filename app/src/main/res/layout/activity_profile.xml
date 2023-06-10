@@ -7,6 +7,17 @@
     tools:context=".feature.profile.Profile">
 
 
+    <ProgressBar
+        android:id="@+id/progressProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.594" />
 
     <TextView
         android:id="@+id/ProfileSetting"
@@ -40,7 +51,8 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:fontFamily="@font/poppins"
-            android:text="Albert Van Martin"
+            android:textStyle="bold"
+            android:text="-"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -81,7 +93,7 @@
             android:layout_marginEnd="157dp"
             android:layout_marginBottom="10dp"
             android:fontFamily="@font/poppins"
-            android:text="82"
+            android:text="-"
             android:textColor="@color/black"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -126,7 +138,7 @@
             android:layout_marginEnd="157dp"
             android:layout_marginBottom="10dp"
             android:fontFamily="@font/poppins"
-            android:text="82"
+            android:text="-"
             android:textColor="@color/black"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -171,18 +183,19 @@
             android:layout_marginEnd="157dp"
             android:layout_marginBottom="10dp"
             android:fontFamily="@font/poppins"
-            android:text="Male"
+            android:text="-"
             android:textColor="@color/black"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.371"
+            app:layout_constraintHorizontal_bias="0.295"
             app:layout_constraintStart_toEndOf="@+id/textView8"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout8"
         android:layout_width="312dp"
         android:layout_height="45dp"
         android:layout_marginTop="12dp"
@@ -215,12 +228,12 @@
             android:layout_marginEnd="157dp"
             android:layout_marginBottom="10dp"
             android:fontFamily="@font/poppins"
-            android:text="21 Years"
+            android:text="-"
             android:textColor="@color/black"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.488"
             app:layout_constraintStart_toEndOf="@+id/textView9"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
@@ -256,11 +269,11 @@
             android:id="@+id/BMISetting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
+            android:layout_marginStart="48dp"
             android:layout_marginTop="11dp"
             android:layout_marginBottom="10dp"
             android:fontFamily="@font/poppins"
-            android:text="25.9kg/m^2"
+            android:text="-"
             android:textColor="@color/black"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"

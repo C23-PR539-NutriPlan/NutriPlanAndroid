@@ -8,10 +8,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class ProfileViewModel(private val repository: Repository): ViewModel() {
-
     fun clearToken(){
         viewModelScope.launch { repository.clearToken() }
     }
+    fun getToken() = repository.getToken().asLiveData(Dispatchers.IO)
     fun getID() = repository.getID().asLiveData(Dispatchers.IO)
     fun getProfile(token : String,id : String) = repository.getProfile(token,id)
 }

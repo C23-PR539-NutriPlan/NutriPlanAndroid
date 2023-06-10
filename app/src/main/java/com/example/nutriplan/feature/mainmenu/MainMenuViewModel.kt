@@ -12,7 +12,7 @@ class MainMenuViewModel(private val repository: Repository): ViewModel() {
     fun getToken() = repository.getToken().asLiveData(Dispatchers.IO)
     fun getID() = repository.getID().asLiveData(Dispatchers.IO)
 
-    fun getProfile(token : String,id : String) = repository.getProfile(token,id)
+    fun getProfile(id : String) = repository.getProfile(id)
 
 
 

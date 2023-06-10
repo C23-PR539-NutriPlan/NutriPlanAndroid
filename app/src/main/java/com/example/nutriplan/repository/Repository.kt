@@ -47,13 +47,13 @@ class Repository (private val apiService: ApiService, private val authDataStore:
         }
     }
 
-    private fun generateBearerToken(token: String):String{
-        return if (token.contains("bearer",true)){
-            token
-        }else{
-            token
-        }
-    }
+//    private fun generateBearerToken(token: String):String{
+//        return if (token.contains("bearer",true)){
+//            token
+//        }else{
+//            token
+//        }
+//    }
 
     private fun generateBearerID(id: String):String{
         return  if(id.contains("bearer",true)){
@@ -62,11 +62,11 @@ class Repository (private val apiService: ApiService, private val authDataStore:
             id
         }
     }
-    fun getProfile(token: String,id : String) : LiveData<com.example.nutriplan.repository.Result<ProfileResponse>> = liveData(Dispatchers.IO) {
+    fun getProfile(id : String) : LiveData<com.example.nutriplan.repository.Result<ProfileResponse>> = liveData(Dispatchers.IO) {
         emit(com.example.nutriplan.repository.Result.Loading)
         try {
 //            val id3 :String = getID()
-            val response = apiService.getProfile(generateBearerToken(token),generateBearerID(id))
+            val response = apiService.getProfile(generateBearerID(id))
             emit(com.example.nutriplan.repository.Result.Success(response))
         }catch (e:Exception){
             emit(com.example.nutriplan.repository.Result.Error(e.message.toString()))

@@ -6,7 +6,6 @@ import androidx.core.view.size
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nutriplan.R
 import com.example.nutriplan.databinding.ActivityDietPlanBinding
-import com.example.nutriplan.feature.mainmenu.MainMenuAdapter
 import com.example.nutriplan.model.Plan
 
 class DietPlan : AppCompatActivity() {

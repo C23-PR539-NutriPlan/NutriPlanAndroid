@@ -27,7 +27,7 @@ class Profile : AppCompatActivity() {
                 if (token != null) {
                     getID().observe(this@Profile) { id ->
                         if (id != null) {
-                            getProfile(token, id).observe(this@Profile) {
+                            getProfile(id).observe(this@Profile) {
                                 Log.e("ini","ini pesan setelah getProfile")
                                 Log.e("Hasil",it.toString())
                                 when (it) {
@@ -81,19 +81,24 @@ class Profile : AppCompatActivity() {
     private fun insertProfile(data1: Data1Item) {
         binding.apply {
             usernameSetting.text = data1.name
-            Log.e("ini nama user", usernameSetting.text.toString())
             heightSetting.text = data1.height.toString()
-            Log.e("ini tinggi user", heightSetting.text.toString())
             weightSetting.text = data1.weight.toString()
-            Log.e("ini berat user", weightSetting.text.toString())
             GenderSetting.text = data1.gender
-            Log.e("ini gender user", GenderSetting.text.toString())
             AgeSetting.text = data1.age.toString()
-            Log.e("ini age user", AgeSetting.text.toString())
             BMISetting.text = data1.bmi.toString()
-            Log.e("ini BMI user", BMISetting.text.toString())
 
-            Log.e("ini nama user", usernameSetting.text.toString())
+            if(data1.bmi < 19){
+                BmiStatus.text = "Underweight"
+            }else if (data1.bmi >= 19 && data1.bmi < 25){
+                BmiStatus.text = "Normal"
+            }else if(data1.bmi >= 25 && data1.bmi < 30){
+                BmiStatus.text = "Overweight"
+            }else{
+                BmiStatus.text = "Obese"
+            }
+
+
+
         }
 
     }

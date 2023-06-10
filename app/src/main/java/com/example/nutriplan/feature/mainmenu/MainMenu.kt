@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.view.size
@@ -35,23 +36,19 @@ class MainMenu : AppCompatActivity() {
                 if (token != null) {
                     getID().observe(this@MainMenu) { id ->
                         if (id != null) {
-                            getProfile(token, id).observe(this@MainMenu) {
+                            getProfile(id).observe(this@MainMenu) {
                                 Log.e("ini","ini pesan setelah getProfile")
                                 Log.e("Hasil",it.toString())
                                 when (it) {
                                     is com.example.nutriplan.repository.Result.Loading -> {
-
+                                        showLoading(true)
                                     }
                                     is com.example.nutriplan.repository.Result.Success -> {
                                         Log.e("Data","Data Masuk")
                                         Log.e("data",it.data.data1[0].toString())
                                         insertCard(it.data.data1[0])
-                                        Toast.makeText(
-                                            this@MainMenu,
-                                            "Success Get User Profile",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
                                         Log.e("Done","Data Selesai")
+                                        showLoading(false)
 
                                     }
                                     is com.example.nutriplan.repository.Result.Error -> {
@@ -61,6 +58,7 @@ class MainMenu : AppCompatActivity() {
                                             "Failed Get User Profile",
                                             Toast.LENGTH_SHORT
                                         ).show()
+                                        showLoading(false)
                                     }
                                 }
                             }
@@ -94,6 +92,15 @@ class MainMenu : AppCompatActivity() {
         binding.apply {
             usernamecardProfile.text = data1Item.name
             BMIProfile.text = data1Item.bmi.toString()
+            if(data1Item.bmi < 19){
+                BmiStatus.text = "Underweight"
+            }else if (data1Item.bmi >= 19 && data1Item.bmi < 25){
+                BmiStatus.text = "Normal"
+            }else if(data1Item.bmi >= 25 && data1Item.bmi < 30){
+                BmiStatus.text = "Overweight"
+            }else{
+                BmiStatus.text = "Obese"
+            }
         }
     }
 
@@ -111,6 +118,14 @@ class MainMenu : AppCompatActivity() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.progressMenu.visibility = View.VISIBLE
+        } else {
+            binding.progressMenu.visibility = View.INVISIBLE
+        }
     }
 
 

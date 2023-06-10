@@ -22,7 +22,6 @@ interface ApiService {
 
     @GET("user/{id}")
     suspend fun getProfile(
-        @Header("Authorization") token :String,
         @Path("id") id : String
     ):ProfileResponse
 }

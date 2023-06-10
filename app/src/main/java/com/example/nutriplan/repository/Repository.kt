@@ -4,9 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.example.nutriplan.api.ApiService
 import com.example.nutriplan.data.AuthDataStore
-import com.example.nutriplan.model.LoginResponse
-import com.example.nutriplan.model.RegisterResponse
-import com.example.nutriplan.model.UserItem
+import com.example.nutriplan.model.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 
@@ -53,15 +51,22 @@ class Repository (private val apiService: ApiService, private val authDataStore:
         return if (token.contains("bearer",true)){
             token
         }else{
-            "Bearer $token"
+            token
         }
     }
 
-    fun getProfile(token: String,id : String) : LiveData<com.example.nutriplan.repository.Result<UserItem>> = liveData(Dispatchers.IO) {
+    private fun generateBearerID(id: String):String{
+        return  if(id.contains("bearer",true)){
+            id
+        }else{
+            id
+        }
+    }
+    fun getProfile(token: String,id : String) : LiveData<com.example.nutriplan.repository.Result<ProfileResponse>> = liveData(Dispatchers.IO) {
         emit(com.example.nutriplan.repository.Result.Loading)
         try {
-            getID()
-            val response = apiService.getProfile(generateBearerToken(token),id)
+//            val id3 :String = getID()
+            val response = apiService.getProfile(generateBearerToken(token),generateBearerID(id))
             emit(com.example.nutriplan.repository.Result.Success(response))
         }catch (e:Exception){
             emit(com.example.nutriplan.repository.Result.Error(e.message.toString()))

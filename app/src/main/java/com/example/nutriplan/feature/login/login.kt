@@ -51,20 +51,23 @@ class login : AppCompatActivity() {
 
         val emailValue = binding.loginEmail.text.toString().trim()
         val passwordValue = binding.loginPassword.text.toString().trim()
-
-        loginViewModel.getUserLogin(emailValue,passwordValue).observe(this@login){
-            when(it){
-                is com.example.nutriplan.repository.Result.Loading ->{
-                    showLoading(true)
-                }
-                is com.example.nutriplan.repository.Result.Success ->{
-                    Toast.makeText(this@login,"Login Success", Toast.LENGTH_SHORT).show()
-                    showLoading(false)
-                    onClicktoMainMenu()
-                }
-                is com.example.nutriplan.repository.Result.Error ->{
-                    Toast.makeText(this@login,"Login Failed", Toast.LENGTH_SHORT).show()
-                    showLoading(false)
+        if(passwordValue.length < 6){
+            Toast.makeText(this@login,"Login Failed", Toast.LENGTH_SHORT).show()
+        }else{
+            loginViewModel.getUserLogin(emailValue,passwordValue).observe(this@login){
+                when(it){
+                    is com.example.nutriplan.repository.Result.Loading ->{
+                        showLoading(true)
+                    }
+                    is com.example.nutriplan.repository.Result.Success ->{
+                        Toast.makeText(this@login,"Login Success", Toast.LENGTH_SHORT).show()
+                        showLoading(false)
+                        onClicktoMainMenu()
+                    }
+                    is com.example.nutriplan.repository.Result.Error ->{
+                        Toast.makeText(this@login,"Login Failed", Toast.LENGTH_SHORT).show()
+                        showLoading(false)
+                    }
                 }
             }
         }

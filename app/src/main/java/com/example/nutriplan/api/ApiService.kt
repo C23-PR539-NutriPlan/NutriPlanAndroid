@@ -24,4 +24,18 @@ interface ApiService {
     suspend fun getProfile(
         @Path("id") id : String
     ):ProfileResponse
+
+    @FormUrlEncoded
+    @POST("user/form/{id}")
+    suspend fun postProfile(
+        @Path("id") id : String,
+        @Field("height") height: Int?,
+        @Field("weight") weight: Int?,
+        @Field("weightGoal") weightGoal: Int,
+        @Field("gender") gender: String,
+        @Field("age") age: Int?,
+        @Field("bmi") bmi: Int,
+        @Field("allergies") allergies: List<String>?,
+        @Field("preferences") preferences: List<String>?,
+    ): ProfilePostResponse
 }

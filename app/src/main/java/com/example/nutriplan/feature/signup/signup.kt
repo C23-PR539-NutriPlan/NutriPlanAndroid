@@ -41,19 +41,23 @@ class signup : AppCompatActivity() {
         val nameValue = binding.signupName.text.toString().trim()
         val emailValue = binding.signupEmail.text.toString().trim()
         val passwordValue = binding.signupPassword.text.toString().trim()
-        signUpViewModel.saveUserRegister(nameValue,emailValue,passwordValue).observe(this@signup){
-            when(it){
-                is com.example.nutriplan.repository.Result.Loading ->{
-                    showLoading(true)
-                }
-                is com.example.nutriplan.repository.Result.Success -> {
-                    Toast.makeText(this@signup,"Sign Up Succes",Toast.LENGTH_SHORT).show()
-                    showLoading(false)
-                    onClicktoLogin()
-                }
-                is com.example.nutriplan.repository.Result.Error -> {
-                    Toast.makeText(this@signup,"Sign Up Failed",Toast.LENGTH_SHORT).show()
-                    showLoading(false)
+        if(nameValue.isEmpty() || emailValue.isEmpty() || passwordValue.length < 6 ){
+            Toast.makeText(this@signup,"Sign Up Failed",Toast.LENGTH_SHORT).show()
+        }else{
+            signUpViewModel.saveUserRegister(nameValue,emailValue,passwordValue).observe(this@signup){
+                when(it){
+                    is com.example.nutriplan.repository.Result.Loading ->{
+                        showLoading(true)
+                    }
+                    is com.example.nutriplan.repository.Result.Success -> {
+                        Toast.makeText(this@signup,"Sign Up Succes",Toast.LENGTH_SHORT).show()
+                        showLoading(false)
+                        onClicktoLogin()
+                    }
+                    is com.example.nutriplan.repository.Result.Error -> {
+                        Toast.makeText(this@signup,"Sign Up Failed",Toast.LENGTH_SHORT).show()
+                        showLoading(false)
+                    }
                 }
             }
         }

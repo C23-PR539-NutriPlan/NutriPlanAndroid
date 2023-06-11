@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".feature.form.Form">
+    tools:context=".feature.form.Form"
+    android:fillViewport="true"
+    >
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -123,7 +125,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView1">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <com.example.nutriplan.customview.EditInput
                 android:id="@+id/AgeForm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -163,7 +165,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <com.example.nutriplan.customview.EditInput
                 android:id="@+id/insertHeight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -203,7 +205,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <com.example.nutriplan.customview.EditInput
                 android:id="@+id/insertWeight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -236,14 +238,30 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="6dp"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="15dp"
             android:layout_marginEnd="75dp"
-            android:fontFamily="@font/poppins"
-            android:text="If any"
-            android:textColor="@color/black"
+            android:fontFamily="@font/poppinsbold"
+            android:textStyle="bold"
+            android:text="Minimum 2"
+            android:textColor="@color/hijauprimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView4"
             app:layout_constraintTop_toBottomOf="@+id/textInputLayout3" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="51dp"
+            android:fontFamily="@font/poppinsbold"
+            android:textStyle="bold"
+            android:text="Minimum 1"
+            android:textColor="@color/hijauprimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/textView29"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout8" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout8"
@@ -690,13 +708,15 @@
             android:id="@+id/textView29"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="56dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="13dp"
             android:fontFamily="@font/poppinsbold"
             android:text="Choose your Food Preferences"
             android:textColor="@color/black"
             android:textSize="16dp"
             android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/textView14"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout8" />
 

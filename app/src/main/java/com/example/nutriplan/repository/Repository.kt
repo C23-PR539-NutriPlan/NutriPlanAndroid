@@ -76,7 +76,7 @@ class Repository (private val apiService: ApiService, private val authDataStore:
         }
     }
 
-    fun postProfile(id: String,height : Int,weight : Int, weightGoal : Int, gender:String,age : Int,bmi: Int,allergies : List<String>,preferences:List<String>) : LiveData<com.example.nutriplan.repository.Result<ProfilePostResponse>> = liveData(Dispatchers.IO){
+    fun postProfile(id: String,height : Int?,weight : Int?, weightGoal : Int, gender:String,age : Int?,bmi: Int,allergies : List<String>,preferences:List<String>) : LiveData<com.example.nutriplan.repository.Result<ProfilePostResponse>> = liveData(Dispatchers.IO){
         emit(com.example.nutriplan.repository.Result.Loading)
         try {
             val response = apiService.postProfile(generateBearerID(id),height, weight, 0, gender, age, bmi, allergies, preferences)

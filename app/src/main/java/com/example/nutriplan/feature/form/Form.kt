@@ -1,12 +1,16 @@
 package com.example.nutriplan.feature.form
 
+
 import android.content.Intent
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.view.get
+import androidx.core.view.isEmpty
+import androidx.core.view.isNotEmpty
 import com.example.nutriplan.ViewModelFactory
 import com.example.nutriplan.databinding.ActivityMakeReccomendationBinding
 import com.example.nutriplan.feature.mainmenu.MainMenu
@@ -15,12 +19,12 @@ class Form : AppCompatActivity() {
     private lateinit var binding: ActivityMakeReccomendationBinding
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMakeReccomendationBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
-
         binding.apply {
             binding.finishrecomm.setOnClickListener {
                 getValueForm()
@@ -31,42 +35,53 @@ class Form : AppCompatActivity() {
     private fun getValueForm() {
         val viewModelFactory : ViewModelFactory = ViewModelFactory.getInstance(this)
         val formViewModel : FormViewModel by viewModels{ viewModelFactory}
-        val gender : String
 
-        if (binding.radioButton.isChecked) {
-            gender = binding.radioButton.text.toString().trim()
+        val gender = if (binding.radioButton.isChecked) {
+            binding.radioButton.text.toString().trim()
         } else {
-            gender = binding.radioButton2.text.toString().trim()
+            binding.radioButton2.text.toString().trim()
         }
-        val height = binding.insertHeight.text.toString().toInt()
+        val height = binding.insertHeight.text.toString()
 
-        val weight = binding.insertWeight.text.toString().toInt()
-        val age = binding.AgeForm.text.toString().toInt()
-        val calculate : Int = (weight / height/ height) * 10000
+        val weight = binding.insertWeight.text.toString()
+
+        val age = binding.AgeForm.text.toString()
+
+        //val calculate : Int = (weight / height/ height) * 10000
         val allergies = getAllergies()
         val preferences = getPreferences()
 
-        formViewModel.getID().observe(this){id->
-            if(id != null){
-                formViewModel.postProfile(id,height,weight,0, gender,age,calculate,allergies,preferences).observe(this@Form){form ->
-                    Log.e("Pesan",form.toString())
-                    when (form){
-                        is com.example.nutriplan.repository.Result.Loading -> {
+        if (gender.isEmpty() || binding.insertHeight.text.toString().isEmpty() || binding.insertWeight.text.toString().isEmpty()|| binding.AgeForm.text.toString().isEmpty()){
+            Toast.makeText(this@Form,"Please Check your input",Toast.LENGTH_SHORT).show()
+        }
+        else{
+            val heightInt = height.toInt()
+            val weightInt = weight.toInt()
+            val ageInt = age.toInt()
+            formViewModel.getID().observe(this){id->
+                if(id != null){
+                    formViewModel.postProfile(id,heightInt,weightInt,0, gender,ageInt,0,allergies,preferences).observe(this@Form){form ->
+                        Log.e("Pesan",form.toString())
+                        when (form){
+                            is com.example.nutriplan.repository.Result.Loading -> {
 
-                        }
-                        is com.example.nutriplan.repository.Result.Success ->{
-                            Toast.makeText(this@Form,"Upload Profile Berhasil",Toast.LENGTH_SHORT).show()
-                            val intent = Intent(this@Form, MainMenu::class.java)
-                            startActivity(intent)
-                            finish()
-                        }
-                        is com.example.nutriplan.repository.Result.Error ->{
-                            Toast.makeText(this@Form,"Gagal",Toast.LENGTH_SHORT).show()
+                            }
+                            is com.example.nutriplan.repository.Result.Success ->{
+                                Toast.makeText(this@Form,"Succes",Toast.LENGTH_SHORT).show()
+                                val intent = Intent(this@Form, MainMenu::class.java)
+                                startActivity(intent)
+                                finish()
+                            }
+                            is com.example.nutriplan.repository.Result.Error ->{
+                                Toast.makeText(this@Form,"Gagal",Toast.LENGTH_SHORT).show()
+                            }
                         }
                     }
                 }
             }
         }
+
+
     }
 
     private fun getAllergies() : ArrayList<String>{
@@ -131,7 +146,14 @@ class Form : AppCompatActivity() {
             val Rum = binding.Rum.text.toString()
             allergies.add(Rum)
         }
-        return allergies
+
+        if(allergies != null){
+            return allergies
+        }else{
+            val kosong = ArrayList<String>()
+            return kosong
+        }
+
     }
 
     private fun getPreferences() : ArrayList<String> {
@@ -180,6 +202,14 @@ class Form : AppCompatActivity() {
             val Cake = binding.Cake.text.toString()
             preference.add(Cake)
         }
-        return preference
+
+        if(preference != null){
+            return preference
+        }else{
+            val kosong = ArrayList<String>()
+            return kosong
+        }
     }
+
+
 }

@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">NutriPlan</string>
+    <string name="invalidemail">Invalid Email</string>
+    <string name="invalidPassword">Password must be more than 6 characters</string>
+    <string name="invalidInput">Cannot be empty</string>
 
 
     <string-array name="FAQuestion">

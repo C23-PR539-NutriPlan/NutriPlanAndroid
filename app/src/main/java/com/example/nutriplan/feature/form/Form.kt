@@ -51,7 +51,7 @@ class Form : AppCompatActivity() {
         val allergies = getAllergies()
         val preferences = getPreferences()
 
-        if (gender.isEmpty() || binding.insertHeight.text.toString().isEmpty() || binding.insertWeight.text.toString().isEmpty()|| binding.AgeForm.text.toString().isEmpty()){
+        if (gender.isEmpty() || binding.insertHeight.text.toString().isEmpty() || binding.insertWeight.text.toString().isEmpty()|| binding.AgeForm.text.toString().isEmpty()||allergies.size <2||preferences.size <2){
             Toast.makeText(this@Form,"Please Check your input",Toast.LENGTH_SHORT).show()
         }
         else{
@@ -73,7 +73,7 @@ class Form : AppCompatActivity() {
                                 finish()
                             }
                             is com.example.nutriplan.repository.Result.Error ->{
-                                Toast.makeText(this@Form,"Gagal",Toast.LENGTH_SHORT).show()
+                                Toast.makeText(this@Form,"Failed Upload Form",Toast.LENGTH_SHORT).show()
                             }
                         }
                     }

@@ -14,7 +14,6 @@ class MainMenuViewModel(private val repository: Repository): ViewModel() {
 
     fun getProfile(id : String) = repository.getProfile(id)
 
-    fun getState() = repository.getState().asLiveData(Dispatchers.IO)
-    fun saveState() { viewModelScope.launch { repository.saveState("ada") } }
+
 
 }

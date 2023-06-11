@@ -27,44 +27,38 @@ class MainMenu : AppCompatActivity() {
         binding = ActivityMainMenuBinding.inflate(layoutInflater)
 
         mainMenuViewModel.apply {
-            getState().observe(this@MainMenu) {
-                if (it == null) {
-                    Log.d("sebelum", "berhasil")
-                    saveState()
-                    Log.d("setelah", "berhasil")
+            getToken().observe(this@MainMenu) { token ->
+                if (token != null) {
+                    getID().observe(this@MainMenu) { id ->
+                        if (id != null) {
+                            getProfile(id).observe(this@MainMenu) {
+                                Log.e("ini", "ini pesan setelah getProfile")
+                                Log.e("Hasil", it.toString())
+                                when (it) {
+                                    is com.example.nutriplan.repository.Result.Loading -> {
+                                        showLoading(true)
+                                    }
+                                    is com.example.nutriplan.repository.Result.Success -> {
+                                        Log.e("Data", "Data Masuk")
+                                        Log.e("data", it.data.data1[0].toString())
+                                        if (it.data.data1[0].gender == null) {
+                                            val inten = Intent(this@MainMenu, Form::class.java)
+                                            startActivity(inten)
+                                            finish()
 
-
-                } else {
-                    getToken().observe(this@MainMenu) { token ->
-                        if (token != null) {
-                            getID().observe(this@MainMenu) { id ->
-                                if (id != null) {
-                                    getProfile(id).observe(this@MainMenu) {
-                                        Log.e("ini", "ini pesan setelah getProfile")
-                                        Log.e("Hasil", it.toString())
-                                        when (it) {
-                                            is com.example.nutriplan.repository.Result.Loading -> {
-                                                showLoading(true)
-
-                                            }
-                                            is com.example.nutriplan.repository.Result.Success -> {
-                                                Log.e("Data", "Data Masuk")
-                                                Log.e("data", it.data.data1[0].toString())
-                                                insertCard(it.data.data1[0])
-                                                Log.e("Done", "Data Selesai")
-                                                showLoading(false)
-
-                                            }
-                                            is com.example.nutriplan.repository.Result.Error -> {
-
-                                                Toast.makeText(
-                                                    this@MainMenu,
-                                                    "Failed Get User Profile",
-                                                    Toast.LENGTH_SHORT
-                                                ).show()
-                                                showLoading(false)
-                                            }
+                                        } else {
+                                            insertCard(it.data.data1[0])
+                                            showLoading(false)
                                         }
+                                    }
+                                    is com.example.nutriplan.repository.Result.Error -> {
+
+                                        Toast.makeText(
+                                            this@MainMenu,
+                                            "Failed Get User Profile",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                        showLoading(false)
                                     }
                                 }
                             }
@@ -72,6 +66,8 @@ class MainMenu : AppCompatActivity() {
                     }
                 }
             }
+
+
         }
 
         setContentView(binding.root)

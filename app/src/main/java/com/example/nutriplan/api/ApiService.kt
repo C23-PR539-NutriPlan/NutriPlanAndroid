@@ -34,7 +34,6 @@ interface ApiService {
         @Field("weightGoal") weightGoal: Int,
         @Field("gender") gender: String,
         @Field("age") age: Int?,
-        @Field("bmi") bmi: Int,
         @Field("allergies") allergies: List<String>?,
         @Field("preferences") preferences: List<String>?,
     ): ProfilePostResponse

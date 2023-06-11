@@ -25,6 +25,7 @@ class MainMenu : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainMenuBinding.inflate(layoutInflater)
+
         mainMenuViewModel.apply {
             getState().observe(this@MainMenu) {
                 if (it == null) {
@@ -80,11 +81,11 @@ class MainMenu : AppCompatActivity() {
                 val intent = Intent(this@MainMenu, Profile::class.java)
                 startActivity(intent)
             }
-            binding.MenuGenerate.setOnClickListener {
-                val intent = Intent(this@MainMenu, Form::class.java)
+            binding.menuFAQ.setOnClickListener {
+                val intent = Intent(this@MainMenu, FAQ::class.java)
                 startActivity(intent)
             }
-            binding.menuRecommendation.setOnClickListener {
+            binding.MenuReccom.setOnClickListener {
                 val intent = Intent(this@MainMenu, DietPlan::class.java)
                 startActivity(intent)
             }
@@ -108,21 +109,21 @@ class MainMenu : AppCompatActivity() {
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        val inflater = menuInflater
-        inflater.inflate(R.menu.menu_utama, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.FAQMenu -> {
-                val intent = Intent(this@MainMenu, FAQ::class.java)
-                startActivity(intent)
-            }
-        }
-        return super.onOptionsItemSelected(item)
-    }
+//    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+//        val inflater = menuInflater
+//        inflater.inflate(R.menu.menu_utama, menu)
+//        return true
+//    }
+//
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        when (item.itemId) {
+//            R.id.FAQMenu -> {
+//                val intent = Intent(this@MainMenu, FAQ::class.java)
+//                startActivity(intent)
+//            }
+//        }
+//        return super.onOptionsItemSelected(item)
+//    }
 
     private fun showLoading(isLoading: Boolean) {
         if (isLoading) {

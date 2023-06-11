@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import com.example.nutriplan.ViewModelFactory
 import com.example.nutriplan.databinding.ActivityProfileBinding
+import com.example.nutriplan.feature.form.Form
 import com.example.nutriplan.feature.login.login
 import com.example.nutriplan.model.Data1Item
 
@@ -69,6 +70,9 @@ class Profile : AppCompatActivity() {
                 profileViewModel.clearId()
                 backToLogin()
             }
+            Reset.setOnClickListener {
+                goToForm()
+            }
         }
         setContentView(binding.root)
     }
@@ -78,6 +82,12 @@ class Profile : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
+    private fun goToForm() {
+        val intent = Intent(this@Profile, Form::class.java)
+        startActivity(intent)
+
+    }
+
 
     private fun insertProfile(data1: Data1Item) {
         binding.apply {

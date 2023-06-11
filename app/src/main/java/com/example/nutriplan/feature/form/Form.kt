@@ -60,7 +60,7 @@ class Form : AppCompatActivity() {
             val ageInt = age.toInt()
             formViewModel.getID().observe(this){id->
                 if(id != null){
-                    formViewModel.postProfile(id,heightInt,weightInt,0, gender,ageInt,0,allergies,preferences).observe(this@Form){form ->
+                    formViewModel.postProfile(id,heightInt,weightInt,0, gender,ageInt,allergies,preferences).observe(this@Form){form ->
                         Log.e("Pesan",form.toString())
                         when (form){
                             is com.example.nutriplan.repository.Result.Loading -> {

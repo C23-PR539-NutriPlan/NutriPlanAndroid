@@ -148,7 +148,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/MenuGenerate"
+                    android:id="@+id/MenuReccom"
                     android:layout_width="340dp"
                     android:layout_height="100dp"
                     android:layout_marginTop="40dp"
@@ -170,7 +170,7 @@
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="13dp"
                             android:layout_marginBottom="12dp"
-                            android:src="@drawable/nutritionwhite"
+                            android:src="@drawable/diet1"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -183,7 +183,7 @@
                             android:layout_marginTop="9dp"
                             android:layout_marginEnd="16dp"
                             android:fontFamily="@font/poppinsbold"
-                            android:text="Generate Recommendation"
+                            android:text="Recommendation"
                             android:textColor="@color/white"
                             android:textSize="16dp"
                             android:textStyle="bold"
@@ -199,7 +199,7 @@
                             android:layout_marginEnd="38dp"
                             android:layout_marginBottom="14dp"
                             android:fontFamily="@font/poppins"
-                            android:text="Make your own food \n recommendation here"
+                            android:text="Check your food that\n we recommend to you"
                             android:textAlignment="center"
                             android:textColor="@color/white"
                             android:textSize="16dp"
@@ -212,7 +212,7 @@
 
 
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/menuRecommendation"
+                    android:id="@+id/menuFAQ"
                     android:layout_width="340dp"
                     android:layout_height="100dp"
                     android:layout_marginStart="35dp"
@@ -222,7 +222,7 @@
                     app:cardCornerRadius="20dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/MenuGenerate">
+                    app:layout_constraintTop_toBottomOf="@+id/MenuReccom">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -236,7 +236,7 @@
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="13dp"
                             android:layout_marginBottom="12dp"
-                            android:src="@drawable/diet1"
+                            android:src="@drawable/help"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
@@ -249,7 +249,7 @@
                             android:layout_marginTop="9dp"
                             android:layout_marginEnd="16dp"
                             android:fontFamily="@font/poppinsbold"
-                            android:text="Recommendation"
+                            android:text="FAQ"
                             android:textColor="@color/white"
                             android:textSize="16dp"
                             android:textStyle="bold"
@@ -265,7 +265,7 @@
                             android:layout_marginEnd="38dp"
                             android:layout_marginBottom="14dp"
                             android:fontFamily="@font/poppins"
-                            android:text="Check your food that\n we recommend to you"
+                            android:text="Have a question?\n Check this out"
                             android:textAlignment="center"
                             android:textColor="@color/white"
                             android:textSize="16dp"
@@ -290,7 +290,7 @@
                     app:cardCornerRadius="20dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/menuRecommendation">
+                    app:layout_constraintTop_toBottomOf="@+id/menuFAQ">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"

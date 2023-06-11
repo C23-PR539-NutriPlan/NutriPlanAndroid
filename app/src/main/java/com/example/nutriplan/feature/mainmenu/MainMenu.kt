@@ -26,33 +26,44 @@ class MainMenu : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainMenuBinding.inflate(layoutInflater)
         mainMenuViewModel.apply {
-            getToken().observe(this@MainMenu) { token ->
-                if (token != null) {
-                    getID().observe(this@MainMenu) { id ->
-                        if (id != null) {
-                            getProfile(id).observe(this@MainMenu) {
-                                Log.e("ini","ini pesan setelah getProfile")
-                                Log.e("Hasil",it.toString())
-                                when (it) {
-                                    is com.example.nutriplan.repository.Result.Loading -> {
-                                        showLoading(true)
-                                    }
-                                    is com.example.nutriplan.repository.Result.Success -> {
-                                        Log.e("Data","Data Masuk")
-                                        Log.e("data",it.data.data1[0].toString())
-                                        insertCard(it.data.data1[0])
-                                        Log.e("Done","Data Selesai")
-                                        showLoading(false)
+            getState().observe(this@MainMenu) {
+                if (it == null) {
+                    Log.d("sebelum", "berhasil")
+                    saveState()
+                    Log.d("setelah", "berhasil")
 
-                                    }
-                                    is com.example.nutriplan.repository.Result.Error -> {
 
-                                        Toast.makeText(
-                                            this@MainMenu,
-                                            "Failed Get User Profile",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
-                                        showLoading(false)
+                } else {
+                    getToken().observe(this@MainMenu) { token ->
+                        if (token != null) {
+                            getID().observe(this@MainMenu) { id ->
+                                if (id != null) {
+                                    getProfile(id).observe(this@MainMenu) {
+                                        Log.e("ini", "ini pesan setelah getProfile")
+                                        Log.e("Hasil", it.toString())
+                                        when (it) {
+                                            is com.example.nutriplan.repository.Result.Loading -> {
+                                                showLoading(true)
+
+                                            }
+                                            is com.example.nutriplan.repository.Result.Success -> {
+                                                Log.e("Data", "Data Masuk")
+                                                Log.e("data", it.data.data1[0].toString())
+                                                insertCard(it.data.data1[0])
+                                                Log.e("Done", "Data Selesai")
+                                                showLoading(false)
+
+                                            }
+                                            is com.example.nutriplan.repository.Result.Error -> {
+
+                                                Toast.makeText(
+                                                    this@MainMenu,
+                                                    "Failed Get User Profile",
+                                                    Toast.LENGTH_SHORT
+                                                ).show()
+                                                showLoading(false)
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -60,7 +71,6 @@ class MainMenu : AppCompatActivity() {
                     }
                 }
             }
-
         }
 
         setContentView(binding.root)
@@ -86,13 +96,13 @@ class MainMenu : AppCompatActivity() {
         binding.apply {
             usernamecardProfile.text = data1Item.name
             BMIProfile.text = data1Item.bmi.toString()
-            if(data1Item.bmi < 19){
+            if (data1Item.bmi < 19) {
                 BmiStatus.text = "Underweight"
-            }else if (data1Item.bmi >= 19 && data1Item.bmi < 25){
+            } else if (data1Item.bmi >= 19 && data1Item.bmi < 25) {
                 BmiStatus.text = "Normal"
-            }else if(data1Item.bmi >= 25 && data1Item.bmi < 30){
+            } else if (data1Item.bmi >= 25 && data1Item.bmi < 30) {
                 BmiStatus.text = "Overweight"
-            }else{
+            } else {
                 BmiStatus.text = "Obese"
             }
         }
@@ -100,13 +110,13 @@ class MainMenu : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater = menuInflater
-        inflater.inflate(R.menu.menu_utama,menu)
+        inflater.inflate(R.menu.menu_utama, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
-            R.id.FAQMenu->{
+        when (item.itemId) {
+            R.id.FAQMenu -> {
                 val intent = Intent(this@MainMenu, FAQ::class.java)
                 startActivity(intent)
             }

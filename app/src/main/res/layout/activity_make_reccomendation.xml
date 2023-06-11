@@ -257,7 +257,7 @@
             android:layout_marginEnd="51dp"
             android:fontFamily="@font/poppinsbold"
             android:textStyle="bold"
-            android:text="Minimum 1"
+            android:text="Minimum 2"
             android:textColor="@color/hijauprimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView29"

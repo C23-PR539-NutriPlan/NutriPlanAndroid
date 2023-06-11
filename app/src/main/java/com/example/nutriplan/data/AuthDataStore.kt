@@ -20,17 +20,7 @@ class AuthDataStore private constructor(private val dataStore: DataStore<Prefere
             it[ID_USER]
         }
     }
-    fun getState(): Flow<String?> {
-        return dataStore.data.map {
-            it[STATE]
-        }
-    }
 
-    suspend fun saveState(state: String) {
-        dataStore.edit {
-            it[STATE] = state
-        }
-    }
     suspend fun saveID(id: String) {
         dataStore.edit {
             it[ID_USER] = id
@@ -59,7 +49,7 @@ class AuthDataStore private constructor(private val dataStore: DataStore<Prefere
     companion object {
         private val TOKEN_KEY = stringPreferencesKey("token")
         private val ID_USER = stringPreferencesKey("id")
-        private val STATE = stringPreferencesKey("state")
+
 
         @Volatile
         private var INSTANCE: AuthDataStore? = null

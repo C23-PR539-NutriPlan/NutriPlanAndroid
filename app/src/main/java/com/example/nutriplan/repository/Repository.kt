@@ -12,7 +12,7 @@ import kotlinx.coroutines.flow.Flow
 class Repository (private val apiService: ApiService, private val authDataStore: AuthDataStore,){
     fun getToken(): Flow<String?> = authDataStore.getToken()
 
-    fun getState() : Flow<String?> = authDataStore.getState()
+
     fun getID() : Flow<String?> = authDataStore.getID()
 
     private suspend fun saveToken(token: String) {
@@ -21,9 +21,7 @@ class Repository (private val apiService: ApiService, private val authDataStore:
     private suspend fun saveID(id: String){
         authDataStore.saveID(id)
     }
-    suspend fun saveState(state : String){
-        authDataStore.saveState(state)
-    }
+
 
     suspend fun clearToken() {
         authDataStore.clearToken()

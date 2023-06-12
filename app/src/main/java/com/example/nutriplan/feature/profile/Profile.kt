@@ -40,11 +40,7 @@ class Profile : AppCompatActivity() {
                                         Log.e("data",it.data.data1[0].toString())
                                         insertProfile(it.data.data1[0])
                                         showLoading(false)
-                                        Toast.makeText(
-                                            this@Profile,
-                                            "Success Get User Profile",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
+
                                         Log.e("Done","Data Selesai")
 
                                     }

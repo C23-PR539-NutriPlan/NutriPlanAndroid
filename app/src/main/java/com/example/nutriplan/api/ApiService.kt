@@ -53,6 +53,6 @@ interface ApiService {
     @POST("like")
     suspend fun postLike(
         @Field("foodID") foodID: Int,
-        @Field("userID") password: String
+        @Field("userID") userID: String
     ): PostLikeResponse
 }

@@ -10,4 +10,6 @@ class DetailPlanViewModel(private val repository: Repository):ViewModel() {
     fun getID() = repository.getID().asLiveData(Dispatchers.IO)
 
     fun getSpesificFood(foodID:Int,userID:String) = repository.getSpesificFood(foodID,userID)
+
+    fun postLike(foodID:Int,userID:String) = repository.postLike(foodID,userID)
 }

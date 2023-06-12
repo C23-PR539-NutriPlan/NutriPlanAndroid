@@ -25,6 +25,12 @@ interface ApiService {
         @Path("id") id : String
     ):GetAllFoodResponse
 
+    @GET("food/{foodID}/{userID}")
+    suspend fun getSpesificFood(
+        @Path("foodID") foodID : Int,
+        @Path("userID") ID : String
+    ):DetailFoodResponse
+
     @FormUrlEncoded
     @POST("user/form/{id}")
     suspend fun postProfile(
@@ -42,4 +48,11 @@ interface ApiService {
     suspend fun getProfile(
         @Path("id") id : String
     ):ProfileResponse
+
+    @FormUrlEncoded
+    @POST("like")
+    suspend fun postLike(
+        @Field("foodID") foodID: Int,
+        @Field("userID") password: String
+    ): PostLikeResponse
 }

@@ -2,48 +2,64 @@ package com.example.nutriplan.feature.dietplan
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.core.view.size
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.nutriplan.R
+import com.example.nutriplan.ViewModelFactory
 import com.example.nutriplan.databinding.ActivityDietPlanBinding
+import com.example.nutriplan.model.ListStoryItem
 import com.example.nutriplan.model.Plan
 
 class DietPlan : AppCompatActivity() {
-    val listPlan  = ArrayList<Plan>()
     private lateinit var binding: ActivityDietPlanBinding
+    private val viewModelFactory : ViewModelFactory = ViewModelFactory.getInstance(this)
+    private val dietPlanViewModel : DietPlanViewModel by viewModels { viewModelFactory  }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDietPlanBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
+
+
         binding.apply {
-            binding.rvdietplan.setHasFixedSize(true)
-            if (binding.rvdietplan.size == 0){
-                listPlan.addAll(getlistPlan())
-            }
+            rvdietplan.layoutManager =layoutManager
+            rvdietplan.addItemDecoration(itemDecoration)
         }
-        showListPlan()
+        getFromApi()
+
         supportActionBar?.hide()
     }
 
-    private fun getlistPlan():ArrayList<Plan>{
-        val dataName = resources.getStringArray(R.array.name)
-        val dataMax_Cal = resources.getStringArray(R.array.Max_Cal)
-        val dataIngredients = resources.getStringArray(R.array.Ingredients)
-        val photo = resources.obtainTypedArray(R.array.Photo)
-        val listPLAN = ArrayList<Plan>()
+    private fun getFromApi(){
+        dietPlanViewModel.getID().observe(this){id->
+            if (id != null){
+                dietPlanViewModel.getAllFood(id).observe(this){
+                    when(it){
+                        is com.example.nutriplan.repository.Result.Loading ->{
 
-        for(i in dataName.indices){
-            val PLAN = Plan(dataName[i],dataIngredients[i],dataMax_Cal[i], photo.getResourceId(i,-1))
-            listPLAN.add(PLAN)
+                        }
+                        is com.example.nutriplan.repository.Result.Success ->{
+                            Log.e("data",it.data.listStory.toString())
+                            getListFoodRecomm(it.data.listStory)
+                            Toast.makeText(this@DietPlan,"Succes to get food recomm",Toast.LENGTH_SHORT).show()
+                        }
+                        is com.example.nutriplan.repository.Result.Error ->{
+                            Toast.makeText(this@DietPlan,"Failed to get food recomm",Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+            }
         }
-        return listPLAN
+    }
+    private fun getListFoodRecomm(data : List<ListStoryItem>){
+        val adapter = DietPlanAdapter(data)
+        binding.rvdietplan.adapter =adapter
     }
 
-    private fun showListPlan(){
-        for (i in  0 .. 9){
-            binding.rvdietplan.layoutManager = LinearLayoutManager(this)
-            val list = DietPlanAdapter(listPlan)
-            binding.rvdietplan.adapter = list
-        }
-    }
+
 }

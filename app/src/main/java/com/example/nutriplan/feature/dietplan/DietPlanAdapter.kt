@@ -1,40 +1,62 @@
 package com.example.nutriplan.feature.dietplan
 
+import android.app.Activity
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.app.ActivityOptionsCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.nutriplan.R
+import com.example.nutriplan.databinding.ItemDetailDietplanBinding
+import com.example.nutriplan.databinding.ItemDietplanBinding
 import com.example.nutriplan.feature.dietplan.detail.DetailDietPlan
 import com.example.nutriplan.model.ListStoryItem
 import com.example.nutriplan.model.Plan
 
-class DietPlanAdapter(private  val listPLAN : List<ListStoryItem>): RecyclerView.Adapter<DietPlanAdapter.ListViewHolder>() {
+class DietPlanAdapter(private val listPLAN: List<ListStoryItem>) : RecyclerView.Adapter<DietPlanAdapter.ViewHolder>() {
 
-    inner class ListViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-        val cal : TextView = itemView.findViewById(R.id.Calories)
-        val nama : TextView = itemView.findViewById(R.id.FoodName)
-        val gambar : ImageView = itemView.findViewById(R.id.gambarlistMakanan)
+    private lateinit var onItemClick: OnitemClick
+
+    interface OnitemClick {
+        fun onItemClicked(data: ListStoryItem)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
-        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.item_dietplan,parent,false)
-        return ListViewHolder(view)
+    fun setOnItemClick(onItemClick: OnitemClick) {
+        this.onItemClick = onItemClick
     }
 
-    override fun getItemCount(): Int = listPLAN.size
+    inner class ViewHolder(private val binding : ItemDietplanBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(food :ListStoryItem){
+            binding.root.setOnClickListener {
+                onItemClick!!.onItemClicked(food)
+            }
+            binding.apply {
+                Glide.with(itemView).load(food.image).into(gambarlistMakanan)
+                FoodName.text = food.name
+                Calories.text = food.calories.toString()
 
-    override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        val food =listPLAN[position]
 
-        holder.apply {
-            Glide.with(itemView.context).load(food?.image).centerCrop().into(gambar)
-            nama.text = food?.name
-            cal.text = food?.calories.toString()
+            }
         }
     }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val binding = ItemDietplanBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        return ViewHolder(binding)
+    }
+
+    override fun getItemCount(): Int  = listPLAN.size
+
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bind(listPLAN[position])
+    }
+
+
+
+
 }

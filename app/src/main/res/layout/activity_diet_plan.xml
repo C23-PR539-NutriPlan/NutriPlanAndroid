@@ -6,54 +6,45 @@
     android:layout_height="match_parent"
     tools:context=".feature.dietplan.DietPlan">
 
-
-    <FrameLayout
-        android:id="@+id/frameLayout2"
-        android:layout_width="0dp"
+    <ProgressBar
+        android:id="@+id/progressRecomm"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:boxStrokeColor="@color/hijauprimary"
-
-            >
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_query"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColorHint="@color/hijauprimary"
-                android:hint="      Search"
-                android:inputType="text"
-                android:maxLines="1"
-                />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <ImageView
-            android:id="@+id/btn_search"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right|center_vertical"
-            android:layout_marginRight="8dp"
-            android:src="@drawable/baseline_search_24" />
-    </FrameLayout>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.499" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvdietplan"
-        android:layout_width="408dp"
-        android:layout_height="590dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="640dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout2" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Button
+        android:id="@+id/login_btn"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/buttonrounded"
+        android:fontFamily="@font/poppins"
+        android:text="Refresh Reccomendation"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rvdietplan"
+        tools:ignore="NotSibling" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

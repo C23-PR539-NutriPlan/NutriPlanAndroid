@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.view.size
@@ -43,15 +44,16 @@ class DietPlan : AppCompatActivity() {
                 dietPlanViewModel.getAllFood(id).observe(this){
                     when(it){
                         is com.example.nutriplan.repository.Result.Loading ->{
-
+                            showLoading(true)
                         }
                         is com.example.nutriplan.repository.Result.Success ->{
                             Log.e("data",it.data.listStory.toString())
                             getListFoodRecomm(it.data.listStory)
-                            Toast.makeText(this@DietPlan,"Succes to get food recomm",Toast.LENGTH_SHORT).show()
+                            showLoading(false)
                         }
                         is com.example.nutriplan.repository.Result.Error ->{
                             Toast.makeText(this@DietPlan,"Failed to get food recomm",Toast.LENGTH_SHORT).show()
+                            showLoading(false)
                         }
                     }
                 }
@@ -70,6 +72,14 @@ class DietPlan : AppCompatActivity() {
         })
 
         binding.rvdietplan.adapter =adapter
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        if (isLoading) {
+            binding.progressRecomm.visibility = View.VISIBLE
+        } else {
+            binding.progressRecomm.visibility = View.INVISIBLE
+        }
     }
 
     companion object {

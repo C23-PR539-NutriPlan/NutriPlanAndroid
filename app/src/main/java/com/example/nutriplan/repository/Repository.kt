@@ -108,6 +108,17 @@ class Repository (private val apiService: ApiService, private val authDataStore:
         }
     }
 
+    fun postLike(foodID: Int,userID: String) : LiveData<com.example.nutriplan.repository.Result<PostLikeResponse>> = liveData(Dispatchers.IO){
+        emit(com.example.nutriplan.repository.Result.Loading)
+
+        try {
+            val response = apiService.postLike(foodID,generateBearerID(userID))
+            emit(com.example.nutriplan.repository.Result.Success(response))
+        }catch (e: Exception){
+            emit(com.example.nutriplan.repository.Result.Error(e.message.toString()))
+        }
+    }
+
 
 
 

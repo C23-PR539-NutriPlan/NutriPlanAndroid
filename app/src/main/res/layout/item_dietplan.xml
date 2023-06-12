@@ -31,7 +31,7 @@
             tools:src="@tools:sample/avatars" />
 
         <TextView
-            android:id="@+id/dayplan"
+            android:id="@+id/FoodName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
@@ -47,20 +47,37 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/maxCalPlan"
+            android:id="@+id/Calories"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="36dp"
             android:layout_marginTop="4dp"
             android:fontFamily="@font/poppins"
-            android:text="1500 Calories"
+            android:text="1500"
             android:textColor="@color/white"
             android:textSize="20dp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.171"
             app:layout_constraintStart_toEndOf="@+id/gambarlistMakanan"
-            app:layout_constraintTop_toBottomOf="@+id/dayplan" />
+            app:layout_constraintTop_toBottomOf="@+id/FoodName" />
+
+        <TextView
+            android:id="@+id/tex1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="9dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="40dp"
+            android:fontFamily="@font/poppins"
+            android:text="Calories"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/Calories"
+            app:layout_constraintTop_toBottomOf="@+id/FoodName" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

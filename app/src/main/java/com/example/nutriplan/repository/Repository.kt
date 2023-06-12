@@ -78,6 +78,16 @@ class Repository (private val apiService: ApiService, private val authDataStore:
         }
     }
 
+    fun getAllFood(id:String): LiveData<com.example.nutriplan.repository.Result<GetAllFoodResponse>> = liveData(Dispatchers.IO){
+        emit(com.example.nutriplan.repository.Result.Loading)
+        try {
+            val response = apiService.getAllFood(generateBearerID(id))
+            emit(com.example.nutriplan.repository.Result.Success(response))
+        }catch (e:Exception){
+            emit(com.example.nutriplan.repository.Result.Error(e.message.toString()))
+        }
+    }
+
     fun postProfile(id: String,height : Int?,weight : Int?, weightGoal : Int, gender:String,age : Int?,allergies : List<String>,preferences:List<String>) : LiveData<com.example.nutriplan.repository.Result<ProfilePostResponse>> = liveData(Dispatchers.IO){
         emit(com.example.nutriplan.repository.Result.Loading)
         try {

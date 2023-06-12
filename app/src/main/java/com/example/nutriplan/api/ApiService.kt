@@ -20,10 +20,10 @@ interface ApiService {
     ): LoginResponse
 
 
-    @GET("user/{id}")
-    suspend fun getProfile(
+    @GET("food/all/{id}")
+    suspend fun getAllFood(
         @Path("id") id : String
-    ):ProfileResponse
+    ):GetAllFoodResponse
 
     @FormUrlEncoded
     @POST("user/form/{id}")
@@ -37,4 +37,9 @@ interface ApiService {
         @Field("allergies") allergies: List<String>?,
         @Field("preferences") preferences: List<String>?,
     ): ProfilePostResponse
+
+    @GET("user/{id}")
+    suspend fun getProfile(
+        @Path("id") id : String
+    ):ProfileResponse
 }

@@ -305,7 +305,7 @@
             android:id="@+id/logout_btn"
             android:layout_width="132dp"
             android:layout_height="39dp"
-            android:layout_marginTop="192dp"
+            android:layout_marginTop="160dp"
             android:background="@color/black"
             android:fontFamily="@font/poppins"
             android:text="Logout"
@@ -319,22 +319,5 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout5" />
 
-        <Button
-            android:id="@+id/Reset"
-            android:layout_width="132dp"
-            android:layout_height="39dp"
-            android:layout_marginTop="120dp"
-            android:background="@color/black"
-            android:fontFamily="@font/poppins"
-            android:text="Reset Profile"
-            android:textAllCaps="false"
-            android:textColor="@color/black"
-
-            android:textSize="12dp"
-            app:circularflow_defaultRadius="5dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout5" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

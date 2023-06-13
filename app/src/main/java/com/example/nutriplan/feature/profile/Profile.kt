@@ -29,19 +29,19 @@ class Profile : AppCompatActivity() {
                     getID().observe(this@Profile) { id ->
                         if (id != null) {
                             getProfile(id).observe(this@Profile) {
-                                Log.e("ini","ini pesan setelah getProfile")
-                                Log.e("Hasil",it.toString())
+                                Log.e("ini", "ini pesan setelah getProfile")
+                                Log.e("Hasil", it.toString())
                                 when (it) {
                                     is com.example.nutriplan.repository.Result.Loading -> {
                                         showLoading(true)
                                     }
                                     is com.example.nutriplan.repository.Result.Success -> {
-                                        Log.e("Data","Data Masuk")
-                                        Log.e("data",it.data.data1[0].toString())
+                                        Log.e("Data", "Data Masuk")
+                                        Log.e("data", it.data.data1[0].toString())
                                         insertProfile(it.data.data1[0])
                                         showLoading(false)
 
-                                        Log.e("Done","Data Selesai")
+                                        Log.e("Done", "Data Selesai")
 
                                     }
                                     is com.example.nutriplan.repository.Result.Error -> {
@@ -66,9 +66,6 @@ class Profile : AppCompatActivity() {
                 profileViewModel.clearId()
                 backToLogin()
             }
-            Reset.setOnClickListener {
-                goToForm()
-            }
         }
         setContentView(binding.root)
     }
@@ -78,12 +75,6 @@ class Profile : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
-    private fun goToForm() {
-        val intent = Intent(this@Profile, Form::class.java)
-        startActivity(intent)
-
-    }
-
 
     private fun insertProfile(data1: Data1Item) {
         binding.apply {
@@ -94,16 +85,15 @@ class Profile : AppCompatActivity() {
             AgeSetting.text = data1.age.toString()
             BMISetting.text = data1.bmi.toString()
 
-            if(data1.bmi < 19){
+            if (data1.bmi < 19) {
                 BmiStatus.text = "Underweight"
-            }else if (data1.bmi >= 19 && data1.bmi < 25){
+            } else if (data1.bmi >= 19 && data1.bmi < 25) {
                 BmiStatus.text = "Normal"
-            }else if(data1.bmi >= 25 && data1.bmi < 30){
+            } else if (data1.bmi >= 25 && data1.bmi < 30) {
                 BmiStatus.text = "Overweight"
-            }else{
+            } else {
                 BmiStatus.text = "Obese"
             }
-
 
 
         }

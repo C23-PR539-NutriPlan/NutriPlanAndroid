@@ -44,5 +44,9 @@ data class Story(
 	val id: Int,
 
 	@field:SerializedName("carbohydrateContent")
-	val carbohydrateContent: Int
+	val carbohydrateContent: Any,
+
+    @field:SerializedName("calories")
+    val calories: Any
+
 )

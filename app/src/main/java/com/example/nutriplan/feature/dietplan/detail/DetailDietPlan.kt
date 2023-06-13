@@ -91,6 +91,7 @@ class DetailDietPlan : AppCompatActivity() {
             detailCholestrol.text = story.cholesterolContent.toString()
             detailSugar.text = story.sugarContent.toString()
             likedFood.isChecked = story.like
+            detailCalories.text = story.calories.toString()
             Glide.with(this@DetailDietPlan).load(story.image).centerCrop().into(gambarMakanan)
         }
     }

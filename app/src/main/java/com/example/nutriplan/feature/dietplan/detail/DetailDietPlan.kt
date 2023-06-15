@@ -35,7 +35,7 @@ class DetailDietPlan : AppCompatActivity() {
                 if (token != null){
                     getID().observe(this@DetailDietPlan) { userID ->
                         if (userID != null) {
-                            getSpesificFood(foodID!!, userID,token).observe(this@DetailDietPlan) {
+                            getSpesificFood(foodID, userID,token).observe(this@DetailDietPlan) {
                                 when (it) {
                                     is com.example.nutriplan.repository.Result.Loading -> {
                                         showLoading(true)

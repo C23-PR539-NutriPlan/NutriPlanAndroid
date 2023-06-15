@@ -31,7 +31,7 @@ class DietPlanAdapter(private val listPLAN: List<ListStoryItem>) : RecyclerView.
     inner class ViewHolder(private val binding : ItemDietplanBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(food :ListStoryItem){
             binding.root.setOnClickListener {
-                onItemClick!!.onItemClicked(food)
+                onItemClick.onItemClicked(food)
             }
             binding.apply {
                 FoodName.text = food.name

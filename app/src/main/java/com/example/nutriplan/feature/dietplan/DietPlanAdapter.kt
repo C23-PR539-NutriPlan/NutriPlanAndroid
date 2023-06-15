@@ -35,7 +35,6 @@ class DietPlanAdapter(private val listPLAN: List<ListStoryItem>) : RecyclerView.
                 onItemClick!!.onItemClicked(food)
             }
             binding.apply {
-                Glide.with(itemView).load(food.image).into(gambarlistMakanan)
                 FoodName.text = food.name
                 Calories.text = food.calories.toString()
 

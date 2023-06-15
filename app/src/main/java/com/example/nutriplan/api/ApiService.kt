@@ -23,7 +23,7 @@ interface ApiService {
     @GET("food/all/{id}")
     suspend fun getAllFood(
         @Path("id") id : String
-    ):GetAllFoodResponse
+    ):ResponseBaru
 
     @GET("food/{foodID}/{userID}")
     suspend fun getSpesificFood(
@@ -55,4 +55,18 @@ interface ApiService {
         @Field("foodID") foodID: Int,
         @Field("userID") userID: String
     ): PostLikeResponse
+
+
+    @Headers("Content-Type: application/json")
+    @POST("predict")
+    suspend fun postPlan(
+        @Body request : PostPlanRequest
+    ):PostPlanResponses
+
+    data class PostPlanRequest(
+        val user_id: String,
+        val user_calories: Int,
+        val user_allergies: List<String>?,
+        val user_favorites: List<String>?
+    )
 }

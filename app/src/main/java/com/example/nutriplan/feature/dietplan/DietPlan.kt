@@ -14,6 +14,7 @@ import com.example.nutriplan.R
 import com.example.nutriplan.ViewModelFactory
 import com.example.nutriplan.databinding.ActivityDietPlanBinding
 import com.example.nutriplan.feature.dietplan.detail.DetailDietPlan
+import com.example.nutriplan.feature.dietplan.post.PostDietPlan
 import com.example.nutriplan.model.ListStoryItem
 import com.example.nutriplan.model.Plan
 
@@ -35,6 +36,11 @@ class DietPlan : AppCompatActivity() {
         }
         getFromApi()
 
+        binding.generateButton.setOnClickListener {
+            val intent = Intent(this@DietPlan,PostDietPlan::class.java)
+            startActivity(intent)
+            finish()
+        }
         supportActionBar?.hide()
     }
 
@@ -47,8 +53,9 @@ class DietPlan : AppCompatActivity() {
                             showLoading(true)
                         }
                         is com.example.nutriplan.repository.Result.Success ->{
-                            Log.e("data",it.data.listStory.toString())
-                            getListFoodRecomm(it.data.listStory)
+                            Log.e("data",it.data.listStory.userAllergies.toString())
+                            Log.e("data",it.data.listStory.userPreferences.toString())
+                            getListFoodRecomm(it.data.listStory.userRecommendation)
                             showLoading(false)
                         }
                         is com.example.nutriplan.repository.Result.Error ->{

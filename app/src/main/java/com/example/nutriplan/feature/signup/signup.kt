@@ -31,7 +31,7 @@ class signup : AppCompatActivity() {
             }
         }
 
-
+        showAnimation()
         supportActionBar?.hide()
 
     }

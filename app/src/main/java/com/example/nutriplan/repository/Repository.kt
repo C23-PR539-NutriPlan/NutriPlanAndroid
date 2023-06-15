@@ -30,25 +30,25 @@ class Repository (private val apiService: ApiService,private val apiService2: Ap
         authDataStore.clearId()
     }
 
-    fun getUserLogin(email: String, password: String): LiveData<com.example.nutriplan.repository.Result<LoginResponse>> = liveData(Dispatchers.IO) {
-            emit(com.example.nutriplan.repository.Result.Loading)
+    fun getUserLogin(email: String, password: String): LiveData<Result<LoginResponse>> = liveData(Dispatchers.IO) {
+            emit(Result.Loading)
             try {
                 val response = apiService.login(email, password)
-                saveToken(response.data!!.token)
-                saveID(response.data!!.user)
-                emit(com.example.nutriplan.repository.Result.Success(response))
+                saveToken(response.data.token)
+                saveID(response.data.user)
+                emit(Result.Success(response))
             } catch (e: Exception) {
-                emit(com.example.nutriplan.repository.Result.Error(e.message.toString()))
+                emit(Result.Error(e.message.toString()))
             }
         }
 
     fun saveUserRegister(name: String, email: String, password: String): LiveData<Result<RegisterResponse>> = liveData(Dispatchers.IO) {
-        emit(com.example.nutriplan.repository.Result.Loading)
+        emit(Result.Loading)
         try {
             val response = apiService.register(name, email, password)
-            emit(com.example.nutriplan.repository.Result.Success(response))
+            emit(Result.Success(response))
         } catch (e: Exception) {
-            emit(com.example.nutriplan.repository.Result.Error(e.message.toString()))
+            emit(Result.Error(e.message.toString()))
         }
     }
 
@@ -67,66 +67,66 @@ class Repository (private val apiService: ApiService,private val apiService2: Ap
             id
         }
     }
-    fun getProfile(id : String,token: String) : LiveData<com.example.nutriplan.repository.Result<ProfileResponse>> = liveData(Dispatchers.IO) {
-        emit(com.example.nutriplan.repository.Result.Loading)
+    fun getProfile(id : String,token: String) : LiveData<Result<ProfileResponse>> = liveData(Dispatchers.IO) {
+        emit(Result.Loading)
         try {
 //            val id3 :String = getID()
             val response = apiService.getProfile(generateBearerID(id),generateBearerToken(token))
-            emit(com.example.nutriplan.repository.Result.Success(response))
+            emit(Result.Success(response))
         }catch (e:Exception){
-            emit(com.example.nutriplan.repository.Result.Error(e.message.toString()))
+            emit(Result.Error(e.message.toString()))
         }
     }
 
-    fun getAllFood(id:String,token: String): LiveData<com.example.nutriplan.repository.Result<ResponseBaru>> = liveData(Dispatchers.IO){
-        emit(com.example.nutriplan.repository.Result.Loading)
+    fun getAllFood(id:String,token: String): LiveData<Result<ResponseBaru>> = liveData(Dispatchers.IO){
+        emit(Result.Loading)
         try {
             val response = apiService.getAllFood(generateBearerID(id),generateBearerToken(token))
-            emit(com.example.nutriplan.repository.Result.Success(response))
+            emit(Result.Success(response))
         }catch (e:Exception){
-            emit(com.example.nutriplan.repository.Result.Error(e.message.toString()))
+            emit(Result.Error(e.message.toString()))
         }
     }
 
-    fun getSpesificFood(foodID:Int,userID:String,token: String): LiveData<com.example.nutriplan.repository.Result<DetailFoodResponse>> = liveData(Dispatchers.IO){
-        emit(com.example.nutriplan.repository.Result.Loading)
+    fun getSpesificFood(foodID:Int,userID:String,token: String): LiveData<Result<DetailFoodResponse>> = liveData(Dispatchers.IO){
+        emit(Result.Loading)
         try {
             val response = apiService.getSpesificFood(foodID,generateBearerID(userID),generateBearerToken(token))
-            emit(com.example.nutriplan.repository.Result.Success(response))
+            emit(Result.Success(response))
         }catch (e:Exception){
-            emit(com.example.nutriplan.repository.Result.Error(e.message.toString()))
+            emit(Result.Error(e.message.toString()))
         }
     }
 
-    fun postProfile(id: String,height : Int?,weight : Int?, weightGoal : Int, gender:String,age : Int?,allergies : List<String>,preferences:List<String>,token: String) : LiveData<com.example.nutriplan.repository.Result<ProfilePostResponse>> = liveData(Dispatchers.IO){
-        emit(com.example.nutriplan.repository.Result.Loading)
+    fun postProfile(id: String,height : Int?,weight : Int?, weightGoal : Int, gender:String,age : Int?,allergies : List<String>,preferences:List<String>,token: String) : LiveData<Result<ProfilePostResponse>> = liveData(Dispatchers.IO){
+        emit(Result.Loading)
         try {
             val response = apiService.postProfile(generateBearerID(id),height, weight, 0, gender, age,  allergies, preferences,generateBearerToken(token))
-            emit(com.example.nutriplan.repository.Result.Success(response))
+            emit(Result.Success(response))
         }catch (e:Exception){
-            emit(com.example.nutriplan.repository.Result.Error(e.message.toString()))
+            emit(Result.Error(e.message.toString()))
         }
     }
 
-    fun postLike(foodID: Int,userID: String,token: String) : LiveData<com.example.nutriplan.repository.Result<PostLikeResponse>> = liveData(Dispatchers.IO){
-        emit(com.example.nutriplan.repository.Result.Loading)
+    fun postLike(foodID: Int,userID: String,token: String) : LiveData<Result<PostLikeResponse>> = liveData(Dispatchers.IO){
+        emit(Result.Loading)
 
         try {
             val response = apiService.postLike(foodID,generateBearerID(userID),generateBearerToken(token))
-            emit(com.example.nutriplan.repository.Result.Success(response))
+            emit(Result.Success(response))
         }catch (e: Exception){
-            emit(com.example.nutriplan.repository.Result.Error(e.message.toString()))
+            emit(Result.Error(e.message.toString()))
         }
     }
 
-    fun postForRecomm(user_id : String, user_calories : Any,user_allergies: List<String>?,user_favorites: List<String>?): LiveData<com.example.nutriplan.repository.Result<PostPlanResponses>> = liveData(Dispatchers.IO){
-        emit(com.example.nutriplan.repository.Result.Loading)
+    fun postForRecomm(user_id : String, user_calories : Any,user_allergies: List<String>?,user_favorites: List<String>?): LiveData<Result<PostPlanResponses>> = liveData(Dispatchers.IO){
+        emit(Result.Loading)
         try {
             val request = ApiService.PostPlanRequest(user_id, user_calories, user_allergies, user_favorites)
             val response = apiService2.postPlan(request)
-            emit(com.example.nutriplan.repository.Result.Success(response))
+            emit(Result.Success(response))
         }catch (e:Exception){
-            emit(com.example.nutriplan.repository.Result.Error(e.message.toString()))
+            emit(Result.Error(e.message.toString()))
         }
 
     }

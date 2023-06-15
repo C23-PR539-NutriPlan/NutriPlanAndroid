@@ -29,8 +29,6 @@ class DietPlan : AppCompatActivity() {
         val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
 
-        showData()
-
         binding.apply {
             rvdietplan.layoutManager =layoutManager
             rvdietplan.addItemDecoration(itemDecoration)
@@ -84,8 +82,8 @@ class DietPlan : AppCompatActivity() {
             }
 
         })
-
         binding.rvdietplan.adapter =adapter
+        showData()
     }
 
     private fun showLoading(isLoading: Boolean) {
@@ -100,7 +98,7 @@ class DietPlan : AppCompatActivity() {
         if (binding.rvdietplan.adapter?.itemCount == 0){
             binding.warning.visibility = View.VISIBLE
 
-        }else if(binding.rvdietplan.size > 1){
+        }else{
             binding.warning.visibility = View.INVISIBLE
         }
     }

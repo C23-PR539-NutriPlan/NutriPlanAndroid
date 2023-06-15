@@ -40,7 +40,7 @@
         android:layout_marginEnd="14dp"
         android:layout_marginBottom="276dp"
         android:fontFamily="@font/poppinsbold"
-        android:text="Please Wait We Are Currently Generating Food \n For You"
+        android:text="Please Wait We Are Currently \n Generating Food For You"
         android:textAlignment="center"
         android:textColor="@color/hijauprimary"
         android:textSize="16dp"

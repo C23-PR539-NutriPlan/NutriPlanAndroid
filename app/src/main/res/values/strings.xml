@@ -6,71 +6,17 @@
 
 
     <string-array name="FAQuestion">
-        <item>How To generate new diet plan? </item>
+        <item>How To generate food recomendation </item>
         <item>How to find out BMI Status? </item>
-        <item>How to update weight and height? </item>
-        <item>How to update food allergies?</item>
+        <item>How to update food preferences?</item>
     </string-array>
 
     <string-array name="FAQAnswer">
-        <item>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ornare rutrum auctor. Sed at erat mi. Morbi semper quis justo nec commodo. Donec non neque suscipit, ullamcorper tortor eget, dictum est. Integer ut est dui. Nulla interdum tincidunt nunc, imperdiet consectetur neque viverra quis </item>
-        <item>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ornare rutrum auctor. Sed at erat mi. Morbi semper quis justo nec commodo. Donec non neque suscipit, ullamcorper tortor eget, dictum est. Integer ut est dui. Nulla interdum tincidunt nunc, imperdiet consectetur neque viverra quis </item>
-        <item>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ornare rutrum auctor. Sed at erat mi. Morbi semper quis justo nec commodo. Donec non neque suscipit, ullamcorper tortor eget, dictum est. Integer ut est dui. Nulla interdum tincidunt nunc, imperdiet consectetur neque viverra quis </item>
-        <item>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ornare rutrum auctor. Sed at erat mi. Morbi semper quis justo nec commodo. Donec non neque suscipit, ullamcorper tortor eget, dictum est. Integer ut est dui. Nulla interdum tincidunt nunc, imperdiet consectetur neque viverra quis </item>
-    </string-array>
+        <item>You can generate food reccomendation by clicking recomendation button in main menu then you can click generate recommendation if you want generate recommendation </item>
+        <item>You can see on the main menu or you can click profile button on the main menu then you can see your BMI status on the profile section  </item>
+        <item>You can update food preferences by clicking the liked button on a food. After it you can re generate the recommendation to get new recommendation </item>
 
-    <string-array name="name">
-        <item>Tuna cabe ijo </item>
-        <item>Ayam Taliwang</item>
-        <item>KFC</item>
-        <item>Pempek Palembang</item>
-        <item>Nasi Goreng</item>
-        <item>Nasi Merah</item>
-        <item>Nasi Liwet</item>
-        <item>Nasi Uduk</item>
-        <item>Nasi Kuning</item>
-        <item>Nasi Item</item>
     </string-array>
-
-    <string-array name="Ingredients">
-        <item>Kentang</item>
-        <item>Ikan</item>
-        <item>Indomie</item>
-        <item>Pasta</item>
-        <item>Salad</item>
-        <item>Steak</item>
-        <item>Nasi Padangl</item>
-        <item>Nasi Rames</item>
-        <item>Soto Ayam</item>
-        <item>Jagun: 100Cal</item>
-    </string-array>
-
-    <string-array name="Max_Cal">
-        <item>1800 Calories</item>
-        <item>2400 Calories</item>
-        <item>400 Calories</item>
-        <item>2400 Calories</item>
-        <item>3400 Calories</item>
-        <item>7400 Calories</item>
-        <item>8400 Calories</item>
-        <item>1400 Calories</item>
-        <item>200 Calories</item>
-        <item>300 Calories</item>
-        <item>500 Calories</item>
-    </string-array>
-
-    <integer-array name="Photo">
-        <item>@drawable/tuna</item>
-        <item>@drawable/tuna</item>
-        <item>@drawable/tuna</item>
-        <item>@drawable/tuna</item>
-        <item>@drawable/tuna</item>
-        <item>@drawable/tuna</item>
-        <item>@drawable/tuna</item>
-        <item>@drawable/tuna</item>
-        <item>@drawable/tuna</item>
-        <item>@drawable/tuna</item>
-    </integer-array>
 
 
 </resources>

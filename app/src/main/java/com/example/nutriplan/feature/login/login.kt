@@ -1,5 +1,6 @@
 package com.example.nutriplan.feature.login
 
+import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -43,6 +44,7 @@ class login : AppCompatActivity() {
             }
         }
         supportActionBar?.hide()
+        showAnimation()
     }
 
     private fun onClickButtonLogin() {
@@ -92,5 +94,13 @@ class login : AppCompatActivity() {
         } else {
             binding.progressLogin.visibility = View.INVISIBLE
         }
+    }
+
+    private fun showAnimation() {
+        ObjectAnimator.ofFloat(binding.imageView, View.TRANSLATION_X, -75f, 75f).apply {
+            duration = 5000
+            repeatCount = ObjectAnimator.INFINITE
+            repeatMode = ObjectAnimator.REVERSE
+        }.start()
     }
 }

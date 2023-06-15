@@ -11,7 +11,6 @@ import androidx.core.app.ActivityOptionsCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.nutriplan.R
-import com.example.nutriplan.databinding.ItemDetailDietplanBinding
 import com.example.nutriplan.databinding.ItemDietplanBinding
 import com.example.nutriplan.feature.dietplan.detail.DetailDietPlan
 import com.example.nutriplan.model.ListStoryItem

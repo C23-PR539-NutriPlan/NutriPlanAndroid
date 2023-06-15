@@ -29,12 +29,7 @@ class DietPlan : AppCompatActivity() {
         val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
 
-        if (binding.rvdietplan.size == 0){
-            binding.warning.visibility = View.VISIBLE
-
-        }else{
-            binding.warning.visibility = View.INVISIBLE
-        }
+        showData()
 
         binding.apply {
             rvdietplan.layoutManager =layoutManager
@@ -98,6 +93,15 @@ class DietPlan : AppCompatActivity() {
             binding.progressRecomm.visibility = View.VISIBLE
         } else {
             binding.progressRecomm.visibility = View.INVISIBLE
+        }
+    }
+
+    private fun showData(){
+        if (binding.rvdietplan.adapter?.itemCount == 0){
+            binding.warning.visibility = View.VISIBLE
+
+        }else if(binding.rvdietplan.size > 1){
+            binding.warning.visibility = View.INVISIBLE
         }
     }
 

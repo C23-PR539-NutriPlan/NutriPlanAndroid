@@ -29,6 +29,12 @@ class DietPlan : AppCompatActivity() {
         val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         val itemDecoration = DividerItemDecoration(this, layoutManager.orientation)
 
+        if (binding.rvdietplan.size == 0){
+            binding.warning.visibility = View.VISIBLE
+
+        }else{
+            binding.warning.visibility = View.INVISIBLE
+        }
 
         binding.apply {
             rvdietplan.layoutManager =layoutManager
@@ -45,26 +51,32 @@ class DietPlan : AppCompatActivity() {
     }
 
     private fun getFromApi(){
-        dietPlanViewModel.getID().observe(this){id->
-            if (id != null){
-                dietPlanViewModel.getAllFood(id).observe(this){
-                    when(it){
-                        is com.example.nutriplan.repository.Result.Loading ->{
-                            showLoading(true)
-                        }
-                        is com.example.nutriplan.repository.Result.Success ->{
-                            Log.e("data",it.data.listStory.userAllergies.toString())
-                            Log.e("data",it.data.listStory.userPreferences.toString())
-                            getListFoodRecomm(it.data.listStory.userRecommendation)
-                            showLoading(false)
-                        }
-                        is com.example.nutriplan.repository.Result.Error ->{
-                            Toast.makeText(this@DietPlan,"Failed to get food recomm",Toast.LENGTH_SHORT).show()
-                            showLoading(false)
+        dietPlanViewModel.getToken().observe(this){token->
+            if (token!= null){
+                dietPlanViewModel.getID().observe(this){id->
+                    if (id != null){
+                        dietPlanViewModel.getAllFood(id,token).observe(this){
+                            when(it){
+                                is com.example.nutriplan.repository.Result.Loading ->{
+                                    showLoading(true)
+                                }
+                                is com.example.nutriplan.repository.Result.Success ->{
+                                    Log.e("data",it.data.listStory.userAllergies.toString())
+                                    Log.e("data",it.data.listStory.userPreferences.toString())
+                                    Log.e("data",it.data.listStory.userCallories.toString())
+                                    getListFoodRecomm(it.data.listStory.userRecommendation)
+                                    showLoading(false)
+                                }
+                                is com.example.nutriplan.repository.Result.Error ->{
+                                    Toast.makeText(this@DietPlan,"Failed to get food recomm",Toast.LENGTH_SHORT).show()
+                                    showLoading(false)
+                                }
+                            }
                         }
                     }
                 }
             }
+
         }
     }
     private fun getListFoodRecomm(data : List<ListStoryItem>){

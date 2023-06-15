@@ -16,5 +16,5 @@ class ProfileViewModel(private val repository: Repository): ViewModel() {
     }
     fun getToken() = repository.getToken().asLiveData(Dispatchers.IO)
     fun getID() = repository.getID().asLiveData(Dispatchers.IO)
-    fun getProfile(id : String) = repository.getProfile(id)
+    fun getProfile(id : String,token : String) = repository.getProfile(id,token)
 }

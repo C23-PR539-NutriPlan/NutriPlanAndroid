@@ -37,8 +37,6 @@ class DietPlanAdapter(private val listPLAN: List<ListStoryItem>) : RecyclerView.
             binding.apply {
                 FoodName.text = food.name
                 Calories.text = food.calories.toString()
-
-
             }
         }
     }

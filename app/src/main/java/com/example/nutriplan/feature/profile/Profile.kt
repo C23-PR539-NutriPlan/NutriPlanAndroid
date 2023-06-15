@@ -28,7 +28,7 @@ class Profile : AppCompatActivity() {
                 if (token != null) {
                     getID().observe(this@Profile) { id ->
                         if (id != null) {
-                            getProfile(id).observe(this@Profile) {
+                            getProfile(id,token).observe(this@Profile) {
                                 Log.e("ini", "ini pesan setelah getProfile")
                                 Log.e("Hasil", it.toString())
                                 when (it) {

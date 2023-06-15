@@ -31,24 +31,28 @@ class DetailDietPlan : AppCompatActivity() {
         val foodID = intent.getIntExtra(EXTRA_ID, 0)
         setContentView(binding.root)
         detailPlanViewModel.apply {
-            getID().observe(this@DetailDietPlan) { userID ->
-                if (userID != null) {
-                    getSpesificFood(foodID!!, userID).observe(this@DetailDietPlan) {
-                        when (it) {
-                            is com.example.nutriplan.repository.Result.Loading -> {
-                                showLoading(true)
-                            }
-                            is com.example.nutriplan.repository.Result.Success -> {
-                                setDetail(it.data.story)
-                                showLoading(false)
-                            }
-                            is com.example.nutriplan.repository.Result.Error -> {
-                                Toast.makeText(
-                                    this@DetailDietPlan,
-                                    "Failed to get detail",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                                showLoading(false)
+            getToken().observe(this@DetailDietPlan){token->
+                if (token != null){
+                    getID().observe(this@DetailDietPlan) { userID ->
+                        if (userID != null) {
+                            getSpesificFood(foodID!!, userID,token).observe(this@DetailDietPlan) {
+                                when (it) {
+                                    is com.example.nutriplan.repository.Result.Loading -> {
+                                        showLoading(true)
+                                    }
+                                    is com.example.nutriplan.repository.Result.Success -> {
+                                        setDetail(it.data.story)
+                                        showLoading(false)
+                                    }
+                                    is com.example.nutriplan.repository.Result.Error -> {
+                                        Toast.makeText(
+                                            this@DetailDietPlan,
+                                            "Failed to get detail",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                        showLoading(false)
+                                    }
+                                }
                             }
                         }
                     }
@@ -60,17 +64,21 @@ class DetailDietPlan : AppCompatActivity() {
             Log.e("before post", "before post")
             Log.e("before post", foodID.toString())
             detailPlanViewModel.apply {
-                getID().observe(this@DetailDietPlan){
-                    if (it!= null){
-                        postLike(foodID,it).observe(this@DetailDietPlan){
-                            when (it){
-                                is com.example.nutriplan.repository.Result.Loading->{
-                                }
-                                is com.example.nutriplan.repository.Result.Success->{
-                                    Log.e("ini",it.data.message)
-                                }
-                                is com.example.nutriplan.repository.Result.Error->{
-                                    Log.e("ini","Gagal")
+                getToken().observe(this@DetailDietPlan){token->
+                    if (token!= null){
+                        getID().observe(this@DetailDietPlan){
+                            if (it!= null){
+                                postLike(foodID,it,token).observe(this@DetailDietPlan){
+                                    when (it){
+                                        is com.example.nutriplan.repository.Result.Loading->{
+                                        }
+                                        is com.example.nutriplan.repository.Result.Success->{
+                                            Log.e("ini",it.data.message)
+                                        }
+                                        is com.example.nutriplan.repository.Result.Error->{
+                                            Log.e("ini","Gagal")
+                                        }
+                                    }
                                 }
                             }
                         }

@@ -58,30 +58,32 @@ class Form : AppCompatActivity() {
             val heightInt = height.toInt()
             val weightInt = weight.toInt()
             val ageInt = age.toInt()
-            formViewModel.getID().observe(this){id->
-                if(id != null){
-                    formViewModel.postProfile(id,heightInt,weightInt,0, gender,ageInt,allergies,preferences).observe(this@Form){form ->
-                        Log.e("Pesan",form.toString())
-                        when (form){
-                            is com.example.nutriplan.repository.Result.Loading -> {
+            formViewModel.getToken().observe(this@Form){token->
+                if(token != null){
+                    formViewModel.getID().observe(this){id->
+                        if(id != null){
+                            formViewModel.postProfile(id,heightInt,weightInt,0, gender,ageInt,allergies,preferences,token).observe(this@Form){form ->
+                                Log.e("Pesan",form.toString())
+                                when (form){
+                                    is com.example.nutriplan.repository.Result.Loading -> {
 
-                            }
-                            is com.example.nutriplan.repository.Result.Success ->{
-                                Toast.makeText(this@Form,"Succes",Toast.LENGTH_SHORT).show()
-                                val intent = Intent(this@Form, MainMenu::class.java)
-                                startActivity(intent)
-                                finish()
-                            }
-                            is com.example.nutriplan.repository.Result.Error ->{
-                                Toast.makeText(this@Form,"Failed Upload Form",Toast.LENGTH_SHORT).show()
+                                    }
+                                    is com.example.nutriplan.repository.Result.Success ->{
+                                        Toast.makeText(this@Form,"Succes",Toast.LENGTH_SHORT).show()
+                                        val intent = Intent(this@Form, MainMenu::class.java)
+                                        startActivity(intent)
+                                        finish()
+                                    }
+                                    is com.example.nutriplan.repository.Result.Error ->{
+                                        Toast.makeText(this@Form,"Failed Upload Form",Toast.LENGTH_SHORT).show()
+                                    }
+                                }
                             }
                         }
                     }
                 }
             }
         }
-
-
     }
 
     private fun getAllergies() : ArrayList<String>{
@@ -194,10 +196,10 @@ class Form : AppCompatActivity() {
             val Rice = binding.Rice.text.toString()
             preference.add(Rice)
         }
-        if (binding.Potatoes.isChecked) {
-            val Potatoes = binding.Potatoes.text.toString()
-            preference.add(Potatoes)
-        }
+//        if (binding.Potatoes.isChecked) {
+//            val Potatoes = binding.Potatoes.text.toString()
+//            preference.add(Potatoes)
+//        }
         if (binding.Cake.isChecked) {
             val Cake = binding.Cake.text.toString()
             preference.add(Cake)

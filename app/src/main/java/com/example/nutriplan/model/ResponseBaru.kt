@@ -30,6 +30,8 @@ data class ListStoryItem(
 )
 
 data class ListStory(
+    @field:SerializedName("user_calories")
+    val userCallories: Any,
 
 	@field:SerializedName("user_recommendation")
 	val userRecommendation: List<ListStoryItem>,

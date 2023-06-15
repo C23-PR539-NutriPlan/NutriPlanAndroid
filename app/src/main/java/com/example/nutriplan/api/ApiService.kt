@@ -22,13 +22,15 @@ interface ApiService {
 
     @GET("food/all/{id}")
     suspend fun getAllFood(
-        @Path("id") id : String
+        @Path("id") id : String,
+        @Header("Authorization") token :String
     ):ResponseBaru
 
     @GET("food/{foodID}/{userID}")
     suspend fun getSpesificFood(
         @Path("foodID") foodID : Int,
-        @Path("userID") ID : String
+        @Path("userID") ID : String,
+        @Header("Authorization") token :String
     ):DetailFoodResponse
 
     @FormUrlEncoded
@@ -42,18 +44,21 @@ interface ApiService {
         @Field("age") age: Int?,
         @Field("allergies") allergies: List<String>?,
         @Field("preferences") preferences: List<String>?,
+        @Header("Authorization") token :String
     ): ProfilePostResponse
 
     @GET("user/{id}")
     suspend fun getProfile(
-        @Path("id") id : String
+        @Path("id") id : String,
+        @Header("Authorization") token :String
     ):ProfileResponse
 
     @FormUrlEncoded
     @POST("like")
     suspend fun postLike(
         @Field("foodID") foodID: Int,
-        @Field("userID") userID: String
+        @Field("userID") userID: String,
+        @Header("Authorization") token :String
     ): PostLikeResponse
 
 
@@ -65,7 +70,7 @@ interface ApiService {
 
     data class PostPlanRequest(
         val user_id: String,
-        val user_calories: Int,
+        val user_calories: Any,
         val user_allergies: List<String>?,
         val user_favorites: List<String>?
     )

@@ -31,7 +31,7 @@ class MainMenu : AppCompatActivity() {
                 if (token != null) {
                     getID().observe(this@MainMenu) { id ->
                         if (id != null) {
-                            getProfile(id).observe(this@MainMenu) {
+                            getProfile(id,token).observe(this@MainMenu) {
                                 Log.e("ini", "ini pesan setelah getProfile")
                                 Log.e("Hasil", it.toString())
                                 when (it) {

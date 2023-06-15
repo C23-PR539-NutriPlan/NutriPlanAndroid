@@ -7,6 +7,6 @@ import kotlinx.coroutines.Dispatchers
 
 class DietPlanViewModel(private val repository: Repository):ViewModel() {
     fun getID()  = repository.getID().asLiveData(Dispatchers.IO)
-
-    fun getAllFood(id:String) = repository.getAllFood(id)
+    fun getToken() = repository.getToken().asLiveData(Dispatchers.IO)
+    fun getAllFood(id:String,token:String) = repository.getAllFood(id,token)
 }

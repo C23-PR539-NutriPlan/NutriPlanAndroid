@@ -9,7 +9,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 
 
-class Repository (private val apiService: ApiService, private val authDataStore: AuthDataStore,){
+class Repository (private val apiService: ApiService,private val apiService2: ApiService, private val authDataStore: AuthDataStore,){
     fun getToken(): Flow<String?> = authDataStore.getToken()
 
 
@@ -78,7 +78,7 @@ class Repository (private val apiService: ApiService, private val authDataStore:
         }
     }
 
-    fun getAllFood(id:String): LiveData<com.example.nutriplan.repository.Result<GetAllFoodResponse>> = liveData(Dispatchers.IO){
+    fun getAllFood(id:String): LiveData<com.example.nutriplan.repository.Result<ResponseBaru>> = liveData(Dispatchers.IO){
         emit(com.example.nutriplan.repository.Result.Loading)
         try {
             val response = apiService.getAllFood(generateBearerID(id))
@@ -119,14 +119,23 @@ class Repository (private val apiService: ApiService, private val authDataStore:
         }
     }
 
+    fun postForRecomm(user_id : String, user_calories : Int,user_allergies: List<String>?,user_favorites: List<String>?): LiveData<com.example.nutriplan.repository.Result<PostPlanResponses>> = liveData(Dispatchers.IO){
+        emit(com.example.nutriplan.repository.Result.Loading)
+        try {
+            val request = ApiService.PostPlanRequest(user_id, user_calories, user_allergies, user_favorites)
+            val response = apiService2.postPlan(request)
+            emit(com.example.nutriplan.repository.Result.Success(response))
+        }catch (e:Exception){
+            emit(com.example.nutriplan.repository.Result.Error(e.message.toString()))
+        }
 
-
+    }
 
     companion object{
         @Volatile
         private var instance : Repository? = null
-        fun getInstance(apiService: ApiService,authDataStore: AuthDataStore):Repository = instance ?: synchronized(this){
-            instance ?:Repository(apiService,authDataStore)
+        fun getInstance(apiService: ApiService,apiService2:ApiService,authDataStore: AuthDataStore):Repository = instance ?: synchronized(this){
+            instance ?:Repository(apiService,apiService2,authDataStore)
         }.also { instance = it }
 
     }

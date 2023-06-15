@@ -92,7 +92,7 @@ class DetailDietPlan : AppCompatActivity() {
             detailSugar.text = story.sugarContent.toString()
             likedFood.isChecked = story.like
             detailCalories.text = story.calories.toString()
-            Glide.with(this@DetailDietPlan).load(story.image).centerCrop().into(gambarMakanan)
+//            Glide.with(this@DetailDietPlan).load(story.image).centerCrop().into(gambarMakanan)
         }
     }
     private fun showLoading(isLoading: Boolean) {

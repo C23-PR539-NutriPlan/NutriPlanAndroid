@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.nutriplan.di.Injection
 import com.example.nutriplan.feature.dietplan.DietPlanViewModel
 import com.example.nutriplan.feature.dietplan.detail.DetailPlanViewModel
+import com.example.nutriplan.feature.dietplan.post.PostDietPlanViewModel
 import com.example.nutriplan.feature.form.FormViewModel
 import com.example.nutriplan.feature.login.LoginViewModel
 import com.example.nutriplan.feature.mainmenu.MainMenuViewModel
@@ -32,6 +33,8 @@ class ViewModelFactory private constructor(private val  repository:Repository):
             return DietPlanViewModel(repository) as T
         }else if(modelClass.isAssignableFrom(DetailPlanViewModel::class.java)){
             return DetailPlanViewModel(repository)as T
+        }else if (modelClass.isAssignableFrom(PostDietPlanViewModel::class.java)){
+            return PostDietPlanViewModel(repository) as T
         }
         throw java.lang.IllegalArgumentException("Unknown ViewModel Class: " + modelClass.name)
     }

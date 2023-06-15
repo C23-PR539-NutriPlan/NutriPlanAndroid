@@ -2,10 +2,10 @@ package com.example.nutriplan.model
 
 import com.google.gson.annotations.SerializedName
 
-data class GetAllFoodResponse(
+data class ResponseBaru(
 
 	@field:SerializedName("listStory")
-	val listStory: List<ListStoryItem2>,
+	val listStory: ListStory,
 
 	@field:SerializedName("message")
 	val message: String,
@@ -14,10 +14,10 @@ data class GetAllFoodResponse(
 	val status: String
 )
 
-data class ListStoryItem2(
+data class ListStoryItem(
 
 	@field:SerializedName("image")
-	val image: String,
+	val image: Any,
 
 	@field:SerializedName("name")
 	val name: String,
@@ -27,4 +27,16 @@ data class ListStoryItem2(
 
 	@field:SerializedName("calories")
 	val calories: Any
+)
+
+data class ListStory(
+
+	@field:SerializedName("user_recommendation")
+	val userRecommendation: List<ListStoryItem>,
+
+	@field:SerializedName("user_allergies")
+	val userAllergies: List<String>,
+
+	@field:SerializedName("user_preferences")
+	val userPreferences: List<String>
 )
